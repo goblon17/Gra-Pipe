@@ -4,8 +4,9 @@ uniform mat4 P;
 uniform mat4 V;
 uniform mat4 M;
 
+
 in vec4 Vertex;
-in vec4 Color;
+uniform vec4 Color;
 
 out vec4 iColor;
 
