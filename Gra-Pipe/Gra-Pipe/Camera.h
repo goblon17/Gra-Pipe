@@ -38,6 +38,7 @@ public:
 	Camera(glm::vec3 pos, glm::vec3 target, glm::vec3 up, float FOV, float aspectRatio, float closePlane, float fatPlane);
 
 	void changePos(double dX, double dY);
+	void changePos(double dScroll);
 };
 
 #endif

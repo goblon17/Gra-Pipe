@@ -10,6 +10,7 @@
 #include "shaderprogram.h"
 #include "Utility.h"
 #include "Camera.h"
+#include "myCube.h"
 
 int WINDOW_WIDTH = 500;
 int WINDOW_HEIGHT = 500;
@@ -27,11 +28,13 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 void cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
-	printf("%lf : %lf\n", cursor.curX, cursor.curY);
 	cursor.oldX = cursor.curX;
 	cursor.oldY = cursor.curY;
 	cursor.curX = xPos;
 	cursor.curY = yPos;
+	if (cursor.middle) {
+		camera->changePos(cursor.curX - cursor.oldX, cursor.curY - cursor.oldY);
+	}
 }
 
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
@@ -66,6 +69,10 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
 		break;
 	}
 	}
+}
+
+void scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
+	camera->changePos(yOffset);
 }
 
 void windowResizeCallback(GLFWwindow* window, int width, int height) {
@@ -108,25 +115,44 @@ void initOpenGLProgram(GLFWwindow** window) {
 		0.1f,					//bliska plaszczyzna
 		50);					//daleka plaszczyzna
 
-	glClearColor(1, 0, 1, 1);
+	glClearColor(0, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
 	glfwSetInputMode(*window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	glfwSetWindowSizeCallback(*window, windowResizeCallback);
 	glfwSetKeyCallback(*window, keyCallback);
 	glfwSetCursorPosCallback(*window, cursorPosCallback);
 	glfwSetMouseButtonCallback(*window, mouseButtonCallback);
+	glfwSetScrollCallback(*window, scrollCallback);
 
 	shader = new ShaderProgram("v_shader.glsl", NULL, "f_shader.glsl");
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {
 	delete shader;
+	delete camera;
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
 
 void drawScene(GLFWwindow* window) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	shader->use();
+
+	glm::mat4 M = glm::mat4(1);
+
+	glUniformMatrix4fv(shader->u("P"), 1, false, glm::value_ptr(camera->Pmat));
+	glUniformMatrix4fv(shader->u("V"), 1, false, glm::value_ptr(camera->Vmat));
+	glUniformMatrix4fv(shader->u("M"), 1, false, glm::value_ptr(M));
+
+	glUniform4f(shader->u("Color"), 1, 1, 1, 1);
+
+	glEnableVertexAttribArray(shader->a("Vertex"));
+	glVertexAttribPointer(shader->a("Vertex"), 4, GL_FLOAT, false, 0, myCubeVertices);
+
+	glDrawArrays(GL_TRIANGLES, 0, myCubeVertexCount);
+
+	glDisableVertexAttribArray(shader->a("Vertex"));
 
 	glfwSwapBuffers(window);
 }
