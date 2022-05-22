@@ -3,7 +3,7 @@
 
 const float PI = 3.141592653589793f;
 
-struct CursorPos {
+struct CursorState {
 	double oldX = 0;
 	double oldY = 0;
 	double curX = 0;

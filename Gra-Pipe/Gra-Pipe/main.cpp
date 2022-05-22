@@ -17,7 +17,7 @@ int WINDOW_HEIGHT = 500;
 
 Camera* camera;
 ShaderProgram* shader;
-CursorPos cursor;
+CursorState cursor;
 
 void errorCallback(int error, const char* description) {
 	fputs(description, stderr);
