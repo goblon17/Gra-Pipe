@@ -80,7 +80,7 @@ void scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
 
 void windowResizeCallback(GLFWwindow* window, int width, int height) {
 	if (height == 0) return;
-	camera->aspectRatio = (float)width / (float)height;
+	camera->resize((float)width / (float)height);
 	glViewport(0, 0, width, height);
 	WINDOW_WIDTH = width;
 	WINDOW_HEIGHT = height;
