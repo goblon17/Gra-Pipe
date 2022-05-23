@@ -8,18 +8,20 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "shaderprogram.h"
-#include "Utility.h"
 #include "Camera.h"
+#include "Utility.h"
 #include "Skybox.h"
 #include "myCube.h"
 #include "Board.h"
+#include "Menu.h"
 
-int WINDOW_WIDTH = 500;
-int WINDOW_HEIGHT = 500;
+WindowSize winSize = { 500, 500 };
 
 Camera* camera;
 Skybox* skybox;
+Menu* menu;
 ShaderProgram* shader;
+ShaderProgram* guiShader;
 CursorState cursor;
 
 void errorCallback(int error, const char* description) {
@@ -82,8 +84,8 @@ void windowResizeCallback(GLFWwindow* window, int width, int height) {
 	if (height == 0) return;
 	camera->resize((float)width / (float)height);
 	glViewport(0, 0, width, height);
-	WINDOW_WIDTH = width;
-	WINDOW_HEIGHT = height;
+	winSize.width = width;
+	winSize.height = height;
 }
 
 void initOpenGLProgram(GLFWwindow** window) {
@@ -94,7 +96,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 		exit(EXIT_FAILURE);
 	}
 
-	*window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "PipeGame", NULL, NULL);
+	*window = glfwCreateWindow(winSize.width, winSize.height, "PipeGame", NULL, NULL);
 
 	if (!*window) {
 		fprintf(stderr, "Nie udalo sie utworzyc okna.\n");
@@ -115,7 +117,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 		glm::vec3(0, 1, 0),		//gdzie kamera ma gore
 		60,						//fov
 		1,						//stosunek szer/wys
-		0.1f,					//bliska plaszczyzna
+		0.01f,					//bliska plaszczyzna
 		100);					//daleka plaszczyzna
 
 	skybox = new Skybox();
@@ -130,12 +132,16 @@ void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetScrollCallback(*window, scrollCallback);
 
 	shader = new ShaderProgram("shaders/v_shader.glsl", NULL, "shaders/f_shader.glsl");
+	guiShader = new ShaderProgram("shaders/gui_v_shader.glsl", NULL, "shaders/gui_f_shader.glsl");
+
+	menu = new Menu();
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {
 	delete shader;
 	delete skybox;
 	delete camera;
+	delete menu;
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
@@ -161,6 +167,8 @@ void drawScene(GLFWwindow* window) {
 	glDisableVertexAttribArray(shader->a("Vertex"));
 
 	skybox->Draw(camera);
+
+	menu->Draw(camera, guiShader);
 
 	glfwSwapBuffers(window);
 }
