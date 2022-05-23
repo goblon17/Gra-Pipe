@@ -11,7 +11,8 @@ in vec3 Vertex;
 out vec3 iTexCoord;
 
 void main(void) {
-	iTexCoord = Vertex;
+	iTexCoord.yz = Vertex.yz;
+	iTexCoord.x = Vertex.x * -1;
 	mat4 nV = V;
 	nV[3].xyz = vec3(0, 0, 0);
 	gl_Position = P * nV * M * vec4(Vertex * Size, 1);

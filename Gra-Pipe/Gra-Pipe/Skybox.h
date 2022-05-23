@@ -71,7 +71,7 @@ private:
 	};
 	int vertCount = 36;
 	float size = 50;
-	std::vector<const char*> filenames = { "textures/skybox/right.png", "textures/skybox/left.png", "textures/skybox/up.png", "textures/skybox/down.png", "textures/skybox/back.png", "textures/skybox/front.png"};
+	std::vector<const char*> filenames = { "textures/skybox/right.png", "textures/skybox/left.png", "textures/skybox/up.png", "textures/skybox/down.png", "textures/skybox/front.png", "textures/skybox/back.png"};
 	glm::mat4 M = glm::mat4(1);
 	GLuint tex;
 	ShaderProgram* skyboxShader;
