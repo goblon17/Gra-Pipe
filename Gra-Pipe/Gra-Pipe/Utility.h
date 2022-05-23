@@ -5,6 +5,8 @@
 #include <vector>
 #include "lodepng.h"
 
+class GUItexture;
+
 const float PI = 3.141592653589793f;
 
 struct CursorState {
@@ -17,9 +19,14 @@ struct CursorState {
 	bool middle = false;
 };
 
+struct WindowSize {
+	int width;
+	int height;
+};
+
 enum Scene {
 	Error = 0,
-	Menu = 1,
+	Start = 1,
 	Settings = 2,
 	Playing = 3,
 	Pause = 4,
@@ -28,7 +35,12 @@ enum Scene {
 };
 
 struct GameState {
-	Scene state = Menu;
+	Scene state = Start;
+};
+
+struct Button {
+	GUItexture* normal;
+	GUItexture* highlighted;
 };
 
 GLuint readTexture2D(const char* filaname);
