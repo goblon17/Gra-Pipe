@@ -10,12 +10,14 @@
 #include "shaderprogram.h"
 #include "Utility.h"
 #include "Camera.h"
+#include "Skybox.h"
 #include "myCube.h"
 
 int WINDOW_WIDTH = 500;
 int WINDOW_HEIGHT = 500;
 
 Camera* camera;
+Skybox* skybox;
 ShaderProgram* shader;
 CursorState cursor;
 
@@ -113,7 +115,9 @@ void initOpenGLProgram(GLFWwindow** window) {
 		60,						//fov
 		1,						//stosunek szer/wys
 		0.1f,					//bliska plaszczyzna
-		50);					//daleka plaszczyzna
+		100);					//daleka plaszczyzna
+
+	skybox = new Skybox();
 
 	glClearColor(0, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
@@ -129,6 +133,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 
 void freeOpenGLProgram(GLFWwindow* window) {
 	delete shader;
+	delete skybox;
 	delete camera;
 	glfwDestroyWindow(window);
 	glfwTerminate();
@@ -153,6 +158,8 @@ void drawScene(GLFWwindow* window) {
 	glDrawArrays(GL_TRIANGLES, 0, myCubeVertexCount);
 
 	glDisableVertexAttribArray(shader->a("Vertex"));
+
+	skybox->Draw(camera);
 
 	glfwSwapBuffers(window);
 }
