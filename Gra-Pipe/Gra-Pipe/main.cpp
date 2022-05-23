@@ -12,6 +12,7 @@
 #include "Camera.h"
 #include "Skybox.h"
 #include "myCube.h"
+#include "Board.h"
 
 int WINDOW_WIDTH = 500;
 int WINDOW_HEIGHT = 500;
@@ -165,6 +166,11 @@ void drawScene(GLFWwindow* window) {
 }
 
 int main() {
+	//init board
+	//Board b(3);
+	//b.generate();
+	//b.printBoard();
+
 	GLFWwindow* window = nullptr;
 
 	initOpenGLProgram(&window);
