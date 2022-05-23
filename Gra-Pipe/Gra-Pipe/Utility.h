@@ -17,6 +17,20 @@ struct CursorState {
 	bool middle = false;
 };
 
+enum Scene {
+	Error = 0,
+	Menu = 1,
+	Settings = 2,
+	Playing = 3,
+	Pause = 4,
+	Win = 5,
+	Loose = 6
+};
+
+struct GameState {
+	Scene state = Menu;
+};
+
 GLuint readTexture2D(const char* filaname);
 
 GLuint readCubeMapTexture(std::vector<const char*> filenames);
