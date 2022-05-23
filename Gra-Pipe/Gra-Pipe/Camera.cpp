@@ -60,3 +60,8 @@ void Camera::changePos(double dScroll) {
 	this->pos = this->calcPos();
 	this->Vmat = this->calculateVmat();
 }
+
+void Camera::resize(float aspectRatio) {
+	this->aspectRatio = aspectRatio;
+	this->Pmat = this->calculatePmat();
+}

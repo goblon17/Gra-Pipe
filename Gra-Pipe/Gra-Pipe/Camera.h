@@ -39,6 +39,7 @@ public:
 
 	void changePos(double dX, double dY);
 	void changePos(double dScroll);
+	void resize(float aspectRatio);
 };
 
 #endif
