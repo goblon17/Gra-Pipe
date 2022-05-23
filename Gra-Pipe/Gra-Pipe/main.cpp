@@ -124,7 +124,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetMouseButtonCallback(*window, mouseButtonCallback);
 	glfwSetScrollCallback(*window, scrollCallback);
 
-	shader = new ShaderProgram("v_shader.glsl", NULL, "f_shader.glsl");
+	shader = new ShaderProgram("shaders/v_shader.glsl", NULL, "shaders/f_shader.glsl");
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {

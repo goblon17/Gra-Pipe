@@ -24,6 +24,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shaderprogram.h">
@@ -38,12 +41,21 @@
     <ClInclude Include="myCube.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="f_shader.glsl">
+    <None Include="shaders\f_shader.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
-    <None Include="v_shader.glsl">
+    <None Include="shaders\skybox_f_shader.glsl">
+      <Filter>Pliki zasobów</Filter>
+    </None>
+    <None Include="shaders\skybox_v_shader.glsl">
+      <Filter>Pliki zasobów</Filter>
+    </None>
+    <None Include="shaders\v_shader.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
   </ItemGroup>
