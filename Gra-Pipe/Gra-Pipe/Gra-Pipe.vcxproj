@@ -136,15 +136,19 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="GUItexture.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="shaderprogram.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="GUItexture.h" />
     <ClInclude Include="lodepng.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="myCube.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Utility.h" />
@@ -153,6 +157,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\f_shader.glsl" />
+    <None Include="shaders\gui_f_shader.glsl" />
+    <None Include="shaders\gui_v_shader.glsl" />
     <None Include="shaders\skybox_f_shader.glsl" />
     <None Include="shaders\skybox_v_shader.glsl" />
     <None Include="shaders\v_shader.glsl" />
