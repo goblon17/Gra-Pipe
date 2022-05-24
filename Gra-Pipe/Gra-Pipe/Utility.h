@@ -8,11 +8,11 @@
 
 const float PI = 3.141592653589793f;
 
-glm::vec2 north(0, -1);
-glm::vec2 east(0, 1);
-glm::vec2 south(1, 0);
-glm::vec2 west(-1, 0);
-glm::vec2 directions[4] = {north, east, south, west};
+const glm::vec2 north(0, -1);
+const glm::vec2 east(0, 1);
+const glm::vec2 south(1, 0);
+const glm::vec2 west(-1, 0);
+const glm::vec2 directions[4] = {north, east, south, west};
 
 struct CursorState {
 	double oldX = 0;
@@ -27,21 +27,6 @@ struct CursorState {
 struct WindowSize {
 	int width;
 	int height;
-};
-
-enum class Scene {
-	Error = 0,
-	Menu = 1,
-	Settings = 2,
-	Playing = 3,
-	Pause = 4,
-	Win = 5,
-	Loose = 6
-};
-
-struct GameState {
-	Scene scene = Scene::Menu;
-	bool allowCameraMovement = false;
 };
 
 struct tile {

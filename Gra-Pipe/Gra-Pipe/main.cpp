@@ -13,17 +13,17 @@
 #include "Skybox.h"
 #include "myCube.h"
 #include "Board.h"
+#include "Scene.h"
 #include "Menu.h"
 
-WindowSize winSize = { 500, 500 };
-GameState state;
+CursorState* cursor;
+WindowSize* winSize;
 
 Camera* camera;
 Skybox* skybox;
 Menu* menu;
 ShaderProgram* shader;
 ShaderProgram* guiShader;
-CursorState cursor;
 
 void errorCallback(int error, const char* description) {
 	fputs(description, stderr);
@@ -34,48 +34,15 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 void cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
-	cursor.oldX = cursor.curX;
-	cursor.oldY = cursor.curY;
-	cursor.curX = xPos;
-	cursor.curY = yPos;
-	if (cursor.middle) {
-		camera->changePos(cursor.curX - cursor.oldX, cursor.curY - cursor.oldY);
-	}
-	menu->mousePosCallback(xPos, yPos, winSize.width, winSize.height);
+	cursor->oldX = cursor->curX;
+	cursor->oldY = cursor->curY;
+	cursor->curX = xPos;
+	cursor->curY = yPos;
+	menu->cursorPosCallback(window, xPos, yPos);
 }
 
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
-	switch (button) {
-	case GLFW_MOUSE_BUTTON_MIDDLE: {
-		if (action == GLFW_PRESS) {
-			cursor.middle = 1;
-			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-		}
-		else if (action == GLFW_RELEASE) {
-			cursor.middle = 0;
-			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-		}
-		break;
-	}
-	case GLFW_MOUSE_BUTTON_LEFT: {
-		if (action == GLFW_PRESS) {
-			cursor.left = 1;
-		}
-		else if (action == GLFW_RELEASE) {
-			cursor.left = 0;
-		}
-		break;
-	}
-	case GLFW_MOUSE_BUTTON_RIGHT: {
-		if (action == GLFW_PRESS) {
-			cursor.right = 1;
-		}
-		else if (action == GLFW_RELEASE) {
-			cursor.right = 0;
-		}
-		break;
-	}
-	}
+	menu->mouseButtonCallback(window, button, action, mods);
 }
 
 void scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
@@ -86,19 +53,21 @@ void windowResizeCallback(GLFWwindow* window, int width, int height) {
 	if (height == 0) return;
 	camera->resize((float)width / (float)height);
 	glViewport(0, 0, width, height);
-	winSize.width = width;
-	winSize.height = height;
+	winSize->width = width;
+	winSize->height = height;
 }
 
 void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetErrorCallback(errorCallback);
+
+	winSize = new WindowSize{ 500, 500 };
 
 	if (!glfwInit()) {
 		fprintf(stderr, "Nie udalo sie zainicjowac GLFW.\n");
 		exit(EXIT_FAILURE);
 	}
 
-	*window = glfwCreateWindow(winSize.width, winSize.height, "PipeGame", NULL, NULL);
+	*window = glfwCreateWindow(winSize->width, winSize->height, "PipeGame", NULL, NULL);
 
 	if (!*window) {
 		fprintf(stderr, "Nie udalo sie utworzyc okna.\n");
@@ -133,17 +102,20 @@ void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetMouseButtonCallback(*window, mouseButtonCallback);
 	glfwSetScrollCallback(*window, scrollCallback);
 
+	cursor = new CursorState;
 	shader = new ShaderProgram("shaders/v_shader.glsl", NULL, "shaders/f_shader.glsl");
 	guiShader = new ShaderProgram("shaders/gui_v_shader.glsl", NULL, "shaders/gui_f_shader.glsl");
 
-	menu = new Menu();
+	menu = new Menu(winSize, cursor);
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {
+	delete cursor;
 	delete shader;
 	delete skybox;
 	delete camera;
 	delete menu;
+	delete winSize;
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
@@ -177,9 +149,9 @@ void drawScene(GLFWwindow* window) {
 
 int main() {
 	//init board
-	Board b(3);
+	/*Board b(3);
 	b.generate();
-	b.printBoard();
+	b.printBoard();*/
 
 	GLFWwindow* window = nullptr;
 

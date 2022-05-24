@@ -25,8 +25,8 @@ bool Button::inBounds(double normalX, double normalY) {
 	return (normalX < this->pos.x + this->size.x) && (normalX > this->pos.x - this->size.x) && (normalY < this->pos.y + this->size.y) && (normalY > this->pos.y - this->size.y);
 }
 
-void Button::mousePosCallback(double X, double Y, int Width, int Height) {
-	double normalX = ((2 * X / (double)Width) - 1) * ((double)Width / (double)Height);
-	double normalY = 1 - (2 * Y / Height);
+void Button::mousePosCallback(double X, double Y, WindowSize* winSize) {
+	double normalX = ((2 * X / (double)winSize->width) - 1) * ((double)winSize->width / (double)winSize->height);
+	double normalY = 1 - (2 * Y / winSize->height);
 	this->isSeleced = inBounds(normalX, normalY);
 }
