@@ -16,6 +16,7 @@
 #include "Menu.h"
 
 WindowSize winSize = { 500, 500 };
+GameState state;
 
 Camera* camera;
 Skybox* skybox;
@@ -40,6 +41,7 @@ void cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	if (cursor.middle) {
 		camera->changePos(cursor.curX - cursor.oldX, cursor.curY - cursor.oldY);
 	}
+	menu->mousePosCallback(xPos, yPos, winSize.width, winSize.height);
 }
 
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
