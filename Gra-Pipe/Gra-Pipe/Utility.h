@@ -6,8 +6,6 @@
 #include <vector>
 #include "lodepng.h"
 
-class GUItexture;
-
 const float PI = 3.141592653589793f;
 
 const glm::vec2 north(0, -1);
@@ -29,25 +27,6 @@ struct CursorState {
 struct WindowSize {
 	int width;
 	int height;
-};
-
-enum Scene {
-	Error = 0,
-	Start = 1,
-	Settings = 2,
-	Playing = 3,
-	Pause = 4,
-	Win = 5,
-	Loose = 6
-};
-
-struct GameState {
-	Scene state = Start;
-};
-
-struct Button {
-	GUItexture* normal;
-	GUItexture* highlighted;
 };
 
 struct tile {

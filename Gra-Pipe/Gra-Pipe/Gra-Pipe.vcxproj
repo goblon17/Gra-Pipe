@@ -135,21 +135,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GUItexture.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="shaderprogram.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="GUItexture.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myCube.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Camera.h" />
