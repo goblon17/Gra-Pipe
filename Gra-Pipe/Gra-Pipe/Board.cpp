@@ -11,94 +11,170 @@ void gotoxy(int x, int y)
 
 Board::Board(int size) {
 	this->size = size;
+	this->grid = new tile** [this->size];
+	for (int i = 0; i < this->size; i++) {
+		this->grid[i] = new tile* [this->size];
+		for (int j = 0; j < this->size; j++) {
+			this->grid[i][j] = new tile(i, j, 0, 0);
+		}
+	}
 }
 
 Board::~Board() {
-	for (auto& i : grid) {
-		i.clear();
+	for (int i = 0; i < this->size; i++) {
+		for (int j = 0; j < this->size; j++)
+			delete this->grid[i][j];
+		delete this->grid[i];
 	}
-	grid.clear();
-}
-
-tile& Board::cell(glm::vec2 tile) {
-	return grid[(int) tile.x][(int) tile.y];
-}
-
-bool Board::isOut(glm::vec2 tile) {
-	for (int i = 1; i < this->size - 1; i++)
-		for (int j = 1; j < this->size - 1; j++)
-			if (i == tile.x && j == tile.y)
-				return false;
-	return true;
+	delete this->grid;
 }
 
 void Board::generate() {
-	std::mt19937 mt(NULL);
-
-	std::vector<glm::vec2> nodes;
-	nodes.push_back(glm::vec2(mt() % this->size, mt() % this->size));
-
-	while (!nodes.empty()) {
-		int n = mt() % nodes.size();
-		glm::vec2 v = nodes[n];
-		glm::vec2 d = directions[mt() % 4];
-
-		if (cell(v).dirs.size() == 3) {
-			nodes.erase(nodes.begin() + n);
-			continue;
-		}
-		if (cell(v).dirs.size() == 2)
-			if (mt() % 2)
-				continue;
-
-		bool complete = 1;
-		for (auto dir : directions)
-			if (!isOut(v + dir) && cell(v + dir).dirs.empty())
-				complete = 0;
-		if (complete) {
-			nodes.erase(nodes.begin() + n);
-			continue;
-		}
-
-		if (isOut(v + d))
-			continue;
-		if (!cell(v + d).dirs.empty())
-			continue;
-		cell(v).dirs.push_back(d);
-		cell(v + d).dirs.push_back(-d);
-		nodes.push_back(v + d);
-	}
+	dfs(this->grid[0][0], 0);
 
 	printf("Board generated\n");
+	this->setConnections();
 }
 
+std::vector<tile*> Board::getNeighbours(tile *t) {
+	std::vector<tile*> neighbours;
+	neighbours.reserve(4);
+
+	unsigned seed = (unsigned) std::chrono::system_clock::now().time_since_epoch().count();
+	std::mt19937 mt(seed);
+	seed = mt();
+
+	std::default_random_engine e(seed);
+
+	// top neighbour
+	if (t->x - 1 >= 0)
+		neighbours.push_back(this->grid[t->x - 1][t->y]);
+	// left neighbour
+	if (t->y - 1 >= 0)
+		neighbours.push_back(this->grid[t->x][t->y - 1]);
+	// bottom neighbour
+	if (t->x + 1 < this->size)
+		neighbours.push_back(this->grid[t->x + 1][t->y]);
+	// right neighbour
+	if (t->y + 1 < this->size)
+		neighbours.push_back(this->grid[t->x][t->y + 1]);
+
+	std::shuffle(neighbours.begin(), neighbours.end(), e);
+	
+	return neighbours;
+}
+
+void Board::dfs(tile *t, int n) {
+	t->visited = true;
+	t->currentValue = n;
+	for (tile* i : getNeighbours(t)) {
+		if (!i->visited)
+			dfs(i, n + 1);
+	}
+}
+
+void Board::setConnections() {
+	for (int i = 0; i < this->size; i++) {
+		for (int j = 0; j < this->size; j++) {
+			tile* current = this->grid[i][j];
+			std::vector<tile*> neighbours = this->getNeighbours(current);
+			for (auto k : neighbours) {
+				if(abs((int) k->currentValue - (int) current->currentValue) != 1)
+					continue;
+				//add top connection
+				if (k->x == current->x - 1) current->correctValue |= 1;
+				//add bottom connection
+				if (k->x == current->x + 1) current->correctValue |= 4;
+				//add left connection
+				if (k->y == current->y - 1) current->correctValue |= 8;
+				//add right connection
+				if (k->y == current->y + 1) current->correctValue |= 2;
+			}
+			if ((current->correctValue & current->correctValue - 1) == 0)
+				current->isTarget = true;
+		}
+	}
+
+	for (int i = 0; i < this->size; i++)
+		for (int j = 0; j < this->size; j++)
+			this->grid[i][j]->currentValue = this->grid[i][j]->correctValue;
+
+	int x = rand() % this->size;
+	int y = rand() % this->size;
+	this->grid[x][y]->isSource = true;
+	this->grid[x][y]->isTarget = false;
+}
+
+void Board::shuffleBoard() {
+	for (int i = 0; i < this->size; i++)
+		for (int j = 0; j < this->size; j++) 
+			rotate(rand() % 3 + 1, this->grid[i][j]);
+}
+
+void Board::rotate(int n, tile* t) {
+	for (int i = 0; i < n; i++) {
+		if (!(t->currentValue % 2))
+			t->currentValue = t->currentValue / 2.0;
+		else
+			t->currentValue = t->currentValue / 2.0 + 7.5;
+	}
+}
 
 void Board::printBoard() {
-	int x = 5;
-	int y = 5;
-	gotoxy(x, y);
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size; j++) {
-			for (auto k : grid[i][j].dirs)
-				printf("%d %d\n", (int) k.x, (int) k.y);
-			/*gotoxy(x, y);
-			//printf("%d %d %d %d\n", i, j, boardMatrix[i][j].connected, value);
-			//printf("% d", boardMatrix[i][j].connected);
-			if (value & 1) printf("  |  ");
-			else printf("     ");
-			gotoxy(x, y+1);
-			if (value & 8) printf("--*");
-			else printf("  *");
-			if (value & 2) printf("--");
-			else printf("  ");
-			gotoxy(x, y+2);
-			if (value & 4) printf("  |  ");
-			else printf("     ");
-			x += 5;*/
+	int x = 2;
+	int y = 4;
+
+	gotoxy(2, 2);
+	printf("Correct Board:");
+	gotoxy(this->size * 5 + 4, 2);
+	printf("Current Board:");
+	for (int i = 0; i < this->size; i++) {
+		for (int j = 0; j < this->size; j++) {
+			int type = this->grid[i][j]->correctValue;
+			gotoxy(x + 2, y + 1);
+			if (this->grid[i][j]->isTarget) printf("O");
+			else if (this->grid[i][j]->isSource) printf("S");
+			else printf("*");
+			
+			if (type & 1) { gotoxy(x + 2, y); printf("|"); }
+			if (type & 2) { gotoxy(x + 3, y + 1); printf("--"); }
+			if (type & 4) { gotoxy(x + 2, y + 2); printf("|"); }
+			if (type & 8) { gotoxy(x, y + 1); printf("--"); }
+			x += 5;
 		}
-		x = 5;
+		printf("\n");
+		x = 2;
 		y += 3;
 	}
-	printf("\n\n\n\n\n");
+	
+	
+	x = this->size * 5 + 4;
+	y = 4;
+	for (int i = 0; i < this->size; i++) {
+		for (int j = 0; j < this->size; j++) {
+			int type = this->grid[i][j]->currentValue;
+			gotoxy(x + 2, y + 1);
+			if (this->grid[i][j]->isTarget) printf("O");
+			else if (this->grid[i][j]->isSource) printf("S");
+			else printf("*");
+
+			if (type & 1) { gotoxy(x + 2, y); printf("|"); }
+			if (type & 2) { gotoxy(x + 3, y + 1); printf("--"); }
+			if (type & 4) { gotoxy(x + 2, y + 2); printf("|"); }
+			if (type & 8) { gotoxy(x, y + 1); printf("--"); }
+			x += 5;
+		}
+		printf("\n");
+		x = this->size * 5 + 4;
+		y += 3;
+	}
+	printf("\n\n");
 }
 
+bool checkWin(Board *b) {
+	for (int i = 0; i < b->size; i++)
+		for (int j = 0; j < b->size; j++)
+			if (b->grid[i][j]->correctValue != b->grid[i][j]->currentValue)
+				return false;
+	return true;
+}

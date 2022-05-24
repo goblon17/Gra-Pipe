@@ -175,9 +175,11 @@ void drawScene(GLFWwindow* window) {
 
 int main() {
 	//init board
-	Board b(20);
+	Board b(5);
 	b.generate();
-	b.printBoard();
+	b.shuffleBoard();
+	b.printBoard();	
+	printf("is won?: %d\n", checkWin(&b));
 
 	GLFWwindow* window = nullptr;
 

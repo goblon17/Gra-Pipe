@@ -10,11 +10,11 @@ class GUItexture;
 
 const float PI = 3.141592653589793f;
 
-glm::vec2 north(0, -1);
-glm::vec2 east(0, 1);
-glm::vec2 south(1, 0);
-glm::vec2 west(-1, 0);
-glm::vec2 directions[4] = {north, east, south, west};
+const glm::vec2 north(0, -1);
+const glm::vec2 east(0, 1);
+const glm::vec2 south(1, 0);
+const glm::vec2 west(-1, 0);
+const glm::vec2 directions[4] = {north, east, south, west};
 
 struct CursorState {
 	double oldX = 0;
@@ -51,8 +51,16 @@ struct Button {
 };
 
 struct tile {
-	std::vector<glm::vec2> dirs;
-	int orientation;
+	int x, y;
+	unsigned int currentValue;
+	bool visited;
+	unsigned int correctValue;
+	bool isTarget;
+	bool isSource;
+
+	tile() { this->x = this->y = this->currentValue = this->visited = this->correctValue = this->isTarget = this->isSource = 0; }
+	tile(unsigned int x, unsigned int y) { this->x = x; this->y = y; this->currentValue = this->visited = this->correctValue = this->isTarget = this->isSource = 0; }
+	tile(unsigned int x, unsigned int y, unsigned int v, bool vis) { this->x = x; this->y = y; this->currentValue = v; this->visited = vis; this->correctValue = this->isTarget = this->isSource = 0; }
 };
 
 GLuint readTexture2D(const char* filaname);
