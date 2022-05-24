@@ -1,0 +1,23 @@
+switch (state.scene) {
+	case Scene::Menu: {
+		break;
+	}
+	case Scene::Settings: {
+		break;
+	}
+	case Scene::Playing: {
+		break;
+	}
+	case Scene::Pause: {
+		break;
+	}
+	case Scene::Loose: {
+		break;
+	}
+	case Scene::Win: {
+		break;
+	}
+	case Scene::Error: {
+		break;
+	}
+}
