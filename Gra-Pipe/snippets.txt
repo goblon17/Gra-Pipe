@@ -21,3 +21,89 @@ switch (state.scene) {
 		break;
 	}
 }
+
+/*
+void middleMousePress(GLFWwindow* window, GameState* state) {
+	switch (state->scene) {
+	case Scene::Menu: {
+		break;
+	}
+	case Scene::Settings: {
+		break;
+	}
+	case Scene::Playing: {
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		break;
+	}
+	case Scene::Pause: {
+		break;
+	}
+	case Scene::Loose: {
+		break;
+	}
+	case Scene::Win: {
+		break;
+	}
+	case Scene::Error: {
+		break;
+	}
+	}
+}
+
+void middleMouseRelease(GLFWwindow* window, GameState* state) {
+	switch (state->scene) {
+	case Scene::Menu: {
+		break;
+	}
+	case Scene::Settings: {
+		break;
+	}
+	case Scene::Playing: {
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		break;
+	}
+	case Scene::Pause: {
+		break;
+	}
+	case Scene::Loose: {
+		break;
+	}
+	case Scene::Win: {
+		break;
+	}
+	case Scene::Error: {
+		break;
+	}
+	}
+}
+*/
+
+/*
+	switch (state.scene) {
+	case Scene::Menu: {
+		menu->mousePosCallback(xPos, yPos, winSize.width, winSize.height);
+		break;
+	}
+	case Scene::Settings: {
+		break;
+	}
+	case Scene::Playing: {
+		if (cursor->middle) {
+			camera->changePos(cursor->curX - cursor->oldX, cursor->curY - cursor->oldY);
+		}
+		break;
+	}
+	case Scene::Pause: {
+		break;
+	}
+	case Scene::Loose: {
+		break;
+	}
+	case Scene::Win: {
+		break;
+	}
+	case Scene::Error: {
+		break;
+	}
+	}
+	*/
