@@ -175,9 +175,9 @@ void drawScene(GLFWwindow* window) {
 
 int main() {
 	//init board
-	//Board b(3);
-	//b.generate();
-	//b.printBoard();
+	Board b(20);
+	b.generate();
+	b.printBoard();
 
 	GLFWwindow* window = nullptr;
 
