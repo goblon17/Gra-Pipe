@@ -8,6 +8,7 @@ Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera) {
 	this->skybox = new Skybox();
 	this->scenes.push_back(new Menu(winSize, cursor, camera));
 	this->scenes.push_back(new Play(winSize, cursor, camera));
+	this->scenes.push_back(new Pause(winSize, cursor, camera));
 }
 
 Game::~Game() {

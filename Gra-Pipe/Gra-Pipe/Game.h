@@ -8,6 +8,7 @@
 #include "Scene.h"
 #include "Menu.h"
 #include "Play.h"
+#include "Pause.h"
 
 class Game
 {
