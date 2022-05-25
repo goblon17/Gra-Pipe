@@ -16,9 +16,9 @@ class Menu : public Scene
 private:
 	const double rotationSpeed = PI;
 public:
-	Menu(WindowSize* winSize, CursorState* cursor);
+	Menu(WindowSize* winSize, CursorState* cursor, Camera* camera);
 	~Menu();
-	void Draw(double dTime, Camera* camera, ShaderProgram* guiShader);
+	void Draw(double dTime, ShaderProgram* guiShader);
 	void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods, Game* game);
 	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos);
 };

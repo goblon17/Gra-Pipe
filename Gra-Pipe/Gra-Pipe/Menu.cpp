@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-Menu::Menu(WindowSize* winSize, CursorState* cursor) {
+Menu::Menu(WindowSize* winSize, CursorState* cursor, Camera* camera) {
 	this->logo = new GUItexture("textures/gui/logo.png", glm::vec2(0, 0.75), glm::vec2(0.418, 0.2));
 
 	this->buttons.push_back(new Button("textures/gui/start_normal.png", "textures/gui/start_highlight.png", glm::vec2(0, -0.1), glm::vec2(0.368, 0.15)));
@@ -9,6 +9,7 @@ Menu::Menu(WindowSize* winSize, CursorState* cursor) {
 	
 	this->winSize = winSize;
 	this->cursor = cursor;
+	this->camera = camera;
 }
 
 Menu::~Menu() {
@@ -18,17 +19,17 @@ Menu::~Menu() {
 	}
 }
 
-void Menu::Draw(double dTime, Camera* camera, ShaderProgram* guiShader) {
-	this->logo->Draw(camera, guiShader);
+void Menu::Draw(double dTime, ShaderProgram* guiShader) {
+	this->logo->Draw(this->camera, guiShader);
 	for (Button* b : this->buttons) {
-		b->Draw(camera, guiShader);
+		b->Draw(this->camera, guiShader);
 	}
-	camera->changePos(dTime * this->rotationSpeed, 0);
+	this->camera->changePos(dTime * this->rotationSpeed, 0);
 }
 
 void Menu::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	for (Button* b : this->buttons) {
-		b->mousePosCallback(xPos, yPos, this->winSize);
+		b->mousePosCallback(window, xPos, yPos, this->winSize);
 	}
 }
 
@@ -53,7 +54,7 @@ void Menu::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 			switch (id) {
 			case 0: {
 				printf("Granie\n");
-				setGameState(GAME_SCENE_GAME, game);
+				setGameState(GAME_SCENE_PLAY, game);
 				break;
 			}
 			case 1: {
