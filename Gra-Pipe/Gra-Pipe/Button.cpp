@@ -21,12 +21,15 @@ void Button::Draw(Camera* camera, ShaderProgram* shader) {
 	}
 }
 
-bool Button::inBounds(double normalX, double normalY) {
-	return (normalX < this->pos.x + this->size.x) && (normalX > this->pos.x - this->size.x) && (normalY < this->pos.y + this->size.y) && (normalY > this->pos.y - this->size.y);
+bool Button::inBounds(double normalX, double normalY, float ar) {
+	float posX = this->pos.x + glm::sign(this->pos.x) * (this->size.x - this->size.x / ar);
+	posX *= ar;
+	return (normalX < posX + this->size.x) && (normalX > posX - this->size.x) && (normalY < this->pos.y + this->size.y) && (normalY > this->pos.y - this->size.y);
 }
 
-void Button::mousePosCallback(double X, double Y, WindowSize* winSize) {
-	double normalX = ((2 * X / (double)winSize->width) - 1) * ((double)winSize->width / (double)winSize->height);
+void Button::mousePosCallback(GLFWwindow* window, double X, double Y, WindowSize* winSize) {
+	double ar = ((double)winSize->width / (double)winSize->height);
+	double normalX = ((2 * X / (double)winSize->width) - 1) * ar;
 	double normalY = 1 - (2 * Y / winSize->height);
-	this->isSeleced = inBounds(normalX, normalY);
+	this->isSeleced = inBounds(normalX, normalY, ar) && glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_NORMAL;
 }

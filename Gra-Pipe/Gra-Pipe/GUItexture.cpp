@@ -4,14 +4,16 @@ GUItexture::GUItexture(const char* src, glm::vec2 pos, glm::vec2 size) {
 	this->tex = readTexture2D(src);
 	this->pos = pos;
 	this->size = size;
-	glm::mat4 M = glm::mat4(1);
-	M = glm::translate(M, glm::vec3(this->pos, 0));
-	M = glm::scale(M, glm::vec3(this->size, 0));
-	this->M = M;
+	this->M = glm::mat4(1);
 }
 
 void GUItexture::Draw(Camera* camera, ShaderProgram* shader) {
 	shader->use();
+
+	this->M = glm::mat4(1);
+	float x = this->pos.x + glm::sign(this->pos.x) * (this->size.x - this->size.x / camera->aspectRatio);
+	this->M = glm::translate(M, glm::vec3(x, this->pos.y, 0));
+	this->M = glm::scale(M, glm::vec3(this->size, 0));
 
 	glUniformMatrix4fv(shader->u("M"), 1, false, glm::value_ptr(this->M));
 	glUniform1f(shader->u("aspectRatio"), camera->aspectRatio);
