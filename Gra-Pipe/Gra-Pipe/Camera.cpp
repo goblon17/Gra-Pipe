@@ -50,7 +50,17 @@ float Camera::calcBeta() {
 
 void Camera::changePos(double dX, double dY) {
 	this->alfa += dX * PI / 180.0f;
-	this->beta += dY * PI / 180.0f;
+	if (this->alfa > PI) {
+		this->alfa -= 2 * PI;
+	}
+	else if (this->alfa < -PI) {
+		this->alfa += 2 * PI;
+	}
+
+	if (this->beta + dY * PI / 180.0f > -PI / 2 && this->beta + dY * PI / 180.0f < PI / 2) {
+		this->beta += dY * PI / 180.0f;
+	}
+
 	this->pos = this->calcPos();
 	this->Vmat = this->calculateVmat();
 }
