@@ -10,8 +10,8 @@ const float PI = 3.141592653589793f;
 
 const int GAME_SCENE_MENU = 0;
 const int GAME_SCENE_PLAY = 1;
-const int GAME_SCENE_SETTINGS = 2;
-const int GAME_SCENE_PAUSE = 3;
+const int GAME_SCENE_PAUSE = 2;
+const int GAME_SCENE_SETTINGS = 3;
 const int GAME_SCENE_WIN = 4;
 
 const glm::vec2 north(0, -1);
