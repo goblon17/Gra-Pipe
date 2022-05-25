@@ -9,17 +9,18 @@
 #include "Camera.h"
 #include "Button.h"
 #include "Scene.h"
+#include "Utility2.h"
 
 class Menu : public Scene
 {
 private:
-
+	const double rotationSpeed = PI;
 public:
 	Menu(WindowSize* winSize, CursorState* cursor);
 	~Menu();
-	void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+	void Draw(double dTime, Camera* camera, ShaderProgram* guiShader);
+	void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods, Game* game);
 	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos);
-	void scrollCallback(GLFWwindow* window, double xOffset, double yOffset);
 };
 
 #endif

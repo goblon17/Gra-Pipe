@@ -18,13 +18,21 @@ Menu::~Menu() {
 	}
 }
 
+void Menu::Draw(double dTime, Camera* camera, ShaderProgram* guiShader) {
+	this->logo->Draw(camera, guiShader);
+	for (Button* b : this->buttons) {
+		b->Draw(camera, guiShader);
+	}
+	camera->changePos(dTime * this->rotationSpeed, 0);
+}
+
 void Menu::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	for (Button* b : this->buttons) {
 		b->mousePosCallback(xPos, yPos, this->winSize);
 	}
 }
 
-void Menu::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
+void Menu::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods, Game* game) {
 	switch (button) {
 	case GLFW_MOUSE_BUTTON_MIDDLE: {
 		if (action == GLFW_PRESS) {
@@ -45,10 +53,12 @@ void Menu::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 			switch (id) {
 			case 0: {
 				printf("Granie\n");
+				setGameState(GAME_SCENE_GAME, game);
 				break;
 			}
 			case 1: {
 				printf("Ustawienia\n");
+				setGameState(GAME_SCENE_SETTINGS, game);
 				break;
 			}
 			case 2: {
@@ -69,8 +79,4 @@ void Menu::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 		break;
 	}
 	}
-}
-
-void Menu::scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
-
 }
