@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\scenes">
+      <UniqueIdentifier>{89d736dd-e3ed-4b45-9dfa-ead1d327343f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\scenes">
+      <UniqueIdentifier>{3bbaca6d-2cba-41b7-a299-5229331ad07b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,9 +42,6 @@
     <ClCompile Include="Board.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="GUItexture.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -54,11 +57,14 @@
     <ClCompile Include="Utility2.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Play.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="scenes\Menu.cpp">
+      <Filter>Pliki źródłowe\scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Pause.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="scenes\Pause.cpp">
+      <Filter>Pliki źródłowe\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\Play.cpp">
+      <Filter>Pliki źródłowe\scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,9 +89,6 @@
     <ClInclude Include="Board.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="GUItexture.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
@@ -101,11 +104,14 @@
     <ClInclude Include="Utility2.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Play.h">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="scenes\Menu.h">
+      <Filter>Pliki nagłówkowe\scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Pause.h">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="scenes\Pause.h">
+      <Filter>Pliki nagłówkowe\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Play.h">
+      <Filter>Pliki nagłówkowe\scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

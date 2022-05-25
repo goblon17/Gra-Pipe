@@ -6,9 +6,9 @@
 #include "Utility.h"
 #include "Camera.h"
 #include "Scene.h"
-#include "Menu.h"
-#include "Play.h"
-#include "Pause.h"
+#include "scenes/Menu.h"
+#include "scenes/Play.h"
+#include "scenes/Pause.h"
 
 class Game
 {
