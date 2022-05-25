@@ -10,27 +10,23 @@
 #include "shaderprogram.h"
 #include "Camera.h"
 #include "Utility.h"
-#include "Skybox.h"
 #include "myCube.h"
 #include "Board.h"
-#include "Scene.h"
-#include "Menu.h"
+#include "Game.h"
 
 CursorState* cursor;
 WindowSize* winSize;
 
+Game* game;
 Camera* camera;
-Skybox* skybox;
-Menu* menu;
 ShaderProgram* shader;
-ShaderProgram* guiShader;
 
 void errorCallback(int error, const char* description) {
 	fputs(description, stderr);
 }
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-
+	game->keyCallback(window, key, scancode, action, mods);
 }
 
 void cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
@@ -38,15 +34,16 @@ void cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	cursor->oldY = cursor->curY;
 	cursor->curX = xPos;
 	cursor->curY = yPos;
-	menu->cursorPosCallback(window, xPos, yPos);
+	game->cursorPosCallback(window, xPos, yPos);
 }
 
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
-	menu->mouseButtonCallback(window, button, action, mods);
+	game->mouseButtonCallback(window, button, action, mods);
 }
 
 void scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
 	camera->changePos(yOffset);
+	game->scrollCallback(window, xOffset, yOffset);
 }
 
 void windowResizeCallback(GLFWwindow* window, int width, int height) {
@@ -91,8 +88,6 @@ void initOpenGLProgram(GLFWwindow** window) {
 		0.01f,					//bliska plaszczyzna
 		100);					//daleka plaszczyzna
 
-	skybox = new Skybox();
-
 	glClearColor(0, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
 	glfwSetInputMode(*window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
@@ -104,23 +99,21 @@ void initOpenGLProgram(GLFWwindow** window) {
 
 	cursor = new CursorState;
 	shader = new ShaderProgram("shaders/v_shader.glsl", NULL, "shaders/f_shader.glsl");
-	guiShader = new ShaderProgram("shaders/gui_v_shader.glsl", NULL, "shaders/gui_f_shader.glsl");
 
-	menu = new Menu(winSize, cursor);
+	game = new Game(winSize, cursor);
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {
 	delete cursor;
 	delete shader;
-	delete skybox;
 	delete camera;
-	delete menu;
 	delete winSize;
+	delete game;
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
 
-void drawScene(GLFWwindow* window) {
+void drawScene(GLFWwindow* window, double dTime) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	shader->use();
@@ -140,9 +133,7 @@ void drawScene(GLFWwindow* window) {
 
 	glDisableVertexAttribArray(shader->a("Vertex"));
 
-	skybox->Draw(camera);
-
-	menu->Draw(camera, guiShader);
+	game->Draw(camera, dTime);
 
 	glfwSwapBuffers(window);
 }
@@ -158,9 +149,12 @@ int main() {
 	GLFWwindow* window = nullptr;
 
 	initOpenGLProgram(&window);
-
+	double time = 0;
+	glfwSetTime(0);
 	while (!glfwWindowShouldClose(window)) {
-		drawScene(window);
+		drawScene(window, time);
+		time = glfwGetTime();
+		glfwSetTime(0);
 		glfwPollEvents();
 	}
 
