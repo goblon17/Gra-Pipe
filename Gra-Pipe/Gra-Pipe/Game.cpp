@@ -1,11 +1,13 @@
 #include "Game.h"
 
-Game::Game(WindowSize* winSize, CursorState* cursor) {
+Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera) {
 	this->winSize = winSize;
 	this->cursor = cursor;
+	this->camera = camera;
 	this->guiShader = new ShaderProgram("shaders/gui_v_shader.glsl", NULL, "shaders/gui_f_shader.glsl");
 	this->skybox = new Skybox();
-	this->scenes.push_back(new Menu(winSize, cursor));
+	this->scenes.push_back(new Menu(winSize, cursor, camera));
+	this->scenes.push_back(new Play(winSize, cursor, camera));
 }
 
 Game::~Game() {
@@ -20,9 +22,9 @@ void Game::setCurrentState(int state) {
 	this->currentState = state;
 }
 
-void Game::Draw(Camera* camera, double dTime) {
-	this->skybox->Draw(camera);
-	this->scenes.at(this->currentState)->Draw(dTime, camera, this->guiShader);
+void Game::Draw(double dTime) {
+	this->skybox->Draw(this->camera);
+	this->scenes.at(this->currentState)->Draw(dTime, this->guiShader);
 }
 
 void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
