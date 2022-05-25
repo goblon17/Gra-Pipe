@@ -2,7 +2,7 @@
 
 Play::Play(WindowSize* winSize, CursorState* cursor, Camera* camera) {
 	this->logo = nullptr;
-	this->buttons.push_back(new Button("textures/gui/menu_normal.png", "textures/gui/menu_highlight.png", glm::vec2(0.632, 0.85), glm::vec2(0.368, 0.15)));
+	this->buttons.push_back(new Button("textures/gui/pause_normal.png", "textures/gui/pause_highlight.png", glm::vec2(0.55, 0.85), glm::vec2(0.45, 0.15)));
 
 	this->winSize = winSize;
 	this->cursor = cursor;
