@@ -42,7 +42,6 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
 }
 
 void scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
-	camera->changePos(yOffset);
 	game->scrollCallback(window, xOffset, yOffset);
 }
 
@@ -100,7 +99,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 	cursor = new CursorState;
 	shader = new ShaderProgram("shaders/v_shader.glsl", NULL, "shaders/f_shader.glsl");
 
-	game = new Game(winSize, cursor);
+	game = new Game(winSize, cursor, camera);
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {
@@ -133,7 +132,7 @@ void drawScene(GLFWwindow* window, double dTime) {
 
 	glDisableVertexAttribArray(shader->a("Vertex"));
 
-	game->Draw(camera, dTime);
+	game->Draw(dTime);
 
 	glfwSwapBuffers(window);
 }
