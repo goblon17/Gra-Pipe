@@ -98,7 +98,6 @@ void initOpenGLProgram(GLFWwindow** window) {
 
 	cursor = new CursorState;
 	shader = new ShaderProgram("shaders/v_shader.glsl", NULL, "shaders/f_shader.glsl");
-
 	game = new Game(winSize, cursor, camera);
 }
 

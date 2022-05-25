@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "shaderprogram.h"
+#include "Fader.h"
 #include "Utility.h"
 #include "Camera.h"
 #include "Scene.h"
@@ -21,6 +22,8 @@ private:
 	WindowSize* winSize = nullptr;
 	CursorState* cursor = nullptr;
 public:
+	Fader* fader;
+
 	Game(WindowSize* winSize, CursorState* cursor, Camera* camera);
 	~Game();
 	void setCurrentState(int state);
