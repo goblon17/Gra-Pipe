@@ -19,7 +19,6 @@ WindowSize* winSize;
 
 Game* game;
 Camera* camera;
-ShaderProgram* shader;
 
 void errorCallback(int error, const char* description) {
 	fputs(description, stderr);
@@ -97,13 +96,11 @@ void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetScrollCallback(*window, scrollCallback);
 
 	cursor = new CursorState;
-	shader = new ShaderProgram("shaders/v_shader.glsl", NULL, "shaders/f_shader.glsl");
 	game = new Game(winSize, cursor, camera);
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {
 	delete cursor;
-	delete shader;
 	delete camera;
 	delete winSize;
 	delete game;

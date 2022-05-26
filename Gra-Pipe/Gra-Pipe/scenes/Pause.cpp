@@ -51,17 +51,17 @@ void Pause::mouseButtonCallback(GLFWwindow* window, int button, int action, int 
 			switch (id) {
 			case 0: {
 				printf("Wznow\n");
-				setGameState(GAME_SCENE_PLAY, game);
+				game->setCurrentState(GAME_SCENE_PLAY);
 				break;
 			}
 			case 1: {
 				printf("Nowa gra\n");
-				setGameState(GAME_SCENE_PLAY, game);
+				game->setCurrentState(GAME_SCENE_PLAY);
 				break;
 			}
 			case 2: {
 				printf("Menu\n");
-				setGameState(GAME_SCENE_MENU, game);
+				game->setCurrentState(GAME_SCENE_MENU);
 				break;
 			}
 			}

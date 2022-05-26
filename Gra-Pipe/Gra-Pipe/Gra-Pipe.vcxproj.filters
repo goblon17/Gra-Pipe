@@ -101,9 +101,6 @@
     <ClInclude Include="Game.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Utility2.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="scenes\Menu.h">
       <Filter>Pliki nagłówkowe\scenes</Filter>
     </ClInclude>
@@ -112,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="scenes\Play.h">
       <Filter>Pliki nagłówkowe\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility2.h">
+      <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

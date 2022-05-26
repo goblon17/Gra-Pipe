@@ -3,7 +3,4 @@
 
 #include "Game.h"
 
-//smieszna funkcja
-void setGameState(int state, Game* game);
-
 #endif

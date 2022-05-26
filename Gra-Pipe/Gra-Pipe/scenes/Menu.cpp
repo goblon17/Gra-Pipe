@@ -54,12 +54,12 @@ void Menu::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 			switch (id) {
 			case 0: {
 				printf("Granie\n");
-				setGameState(GAME_SCENE_PLAY, game);
+				game->setCurrentState(GAME_SCENE_PLAY);
 				break;
 			}
 			case 1: {
 				printf("Ustawienia\n");
-				setGameState(GAME_SCENE_SETTINGS, game);
+				game->setCurrentState(GAME_SCENE_PLAY);
 				break;
 			}
 			case 2: {
