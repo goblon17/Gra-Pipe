@@ -137,7 +137,6 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Fader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUItexture.cpp" />
     <ClCompile Include="lodepng.cpp" />
@@ -154,7 +153,6 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Button.h" />
-    <ClInclude Include="Fader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUItexture.h" />
     <ClInclude Include="lodepng.h" />
@@ -170,8 +168,6 @@
     <ClInclude Include="Utility2.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\fade_f_shader.glsl" />
-    <None Include="shaders\fade_v_shader.glsl" />
     <None Include="shaders\f_shader.glsl" />
     <None Include="shaders\gui_f_shader.glsl" />
     <None Include="shaders\gui_v_shader.glsl" />

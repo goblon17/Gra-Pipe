@@ -66,9 +66,6 @@
     <ClCompile Include="Utility2.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Fader.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shaderprogram.h">
@@ -116,9 +113,6 @@
     <ClInclude Include="scenes\Play.h">
       <Filter>Pliki nagłówkowe\scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Fader.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\f_shader.glsl">
@@ -137,12 +131,6 @@
       <Filter>Pliki zasobów</Filter>
     </None>
     <None Include="shaders\gui_v_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
-    </None>
-    <None Include="shaders\fade_f_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
-    </None>
-    <None Include="shaders\fade_v_shader.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
   </ItemGroup>

@@ -112,25 +112,6 @@ void freeOpenGLProgram(GLFWwindow* window) {
 }
 
 void drawScene(GLFWwindow* window, double dTime) {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	shader->use();
-
-	glm::mat4 M = glm::mat4(1);
-
-	glUniformMatrix4fv(shader->u("P"), 1, false, glm::value_ptr(camera->Pmat));
-	glUniformMatrix4fv(shader->u("V"), 1, false, glm::value_ptr(camera->Vmat));
-	glUniformMatrix4fv(shader->u("M"), 1, false, glm::value_ptr(M));
-
-	glUniform4f(shader->u("Color"), 1, 1, 1, 1);
-
-	glEnableVertexAttribArray(shader->a("Vertex"));
-	glVertexAttribPointer(shader->a("Vertex"), 4, GL_FLOAT, false, 0, myCubeVertices);
-
-	glDrawArrays(GL_TRIANGLES, 0, myCubeVertexCount);
-
-	glDisableVertexAttribArray(shader->a("Vertex"));
-
 	game->Draw(dTime);
 
 	glfwSwapBuffers(window);

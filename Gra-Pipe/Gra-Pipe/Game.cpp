@@ -6,7 +6,6 @@ Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera) {
 	this->camera = camera;
 	this->guiShader = new ShaderProgram("shaders/gui_v_shader.glsl", NULL, "shaders/gui_f_shader.glsl");
 	this->skybox = new Skybox();
-	this->fader = new Fader();
 	this->scenes.push_back(new Menu(winSize, cursor, camera));
 	this->scenes.push_back(new Play(winSize, cursor, camera));
 	this->scenes.push_back(new Pause(winSize, cursor, camera));
@@ -15,7 +14,6 @@ Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera) {
 Game::~Game() {
 	delete this->skybox;
 	delete this->guiShader;
-	delete this->fader;
 	for (Scene* s : this->scenes) {
 		delete s;
 	}
@@ -26,6 +24,8 @@ void Game::setCurrentState(int state) {
 }
 
 void Game::Draw(double dTime) {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	this->skybox->Draw(this->camera);
 	this->scenes.at(this->currentState)->Draw(dTime, this->guiShader);
 }
