@@ -26,7 +26,7 @@ void Play::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 		b->mousePosCallback(window, xPos, yPos, this->winSize);
 	}
 	if (this->cursor->middle) {
-		camera->changePos(this->cursor->curX - this->cursor->oldX, this->cursor->curY - this->cursor->oldY);
+		camera->changePos(this->cursor->curX - this->cursor->oldX, this->cursor->curY - this->cursor->oldY, 1);
 	}
 }
 

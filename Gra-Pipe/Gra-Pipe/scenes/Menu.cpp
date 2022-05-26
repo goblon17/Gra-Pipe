@@ -24,7 +24,7 @@ void Menu::Draw(double dTime, ShaderProgram* guiShader) {
 	for (Button* b : this->buttons) {
 		b->Draw(this->camera, guiShader);
 	}
-	this->camera->changePos(dTime * rotationSpeed, 0);
+	this->camera->changePos(dTime * rotationSpeed, 0, 0);
 }
 
 void Menu::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {

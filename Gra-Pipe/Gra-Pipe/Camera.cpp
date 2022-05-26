@@ -48,8 +48,11 @@ float Camera::calcBeta() {
 	return glm::asin(sinB);
 }
 
-void Camera::changePos(double dX, double dY) {
-	this->alfa += dX * PI / 180.0f / this->sensitivity;
+void Camera::changePos(double dX, double dY, int withSens) {
+	double dA = dX * PI / 180.0f / this->sensitivity;
+	dA *= withSens ? 1 : this->sensitivity;
+
+	this->alfa += dA;
 	if (this->alfa > PI) {
 		this->alfa -= 2 * PI;
 	}
@@ -57,8 +60,10 @@ void Camera::changePos(double dX, double dY) {
 		this->alfa += 2 * PI;
 	}
 
-	if (this->beta + dY * PI / 180.0f / this->sensitivity > -PI / 2 && this->beta + dY * PI / 180.0f / this->sensitivity < PI / 2) {
-		this->beta += dY * PI / 180.0f / this->sensitivity;
+	double dB = dY * PI / 180.0f / this->sensitivity;
+	dB *= withSens ? 1 : this->sensitivity;
+	if (this->beta + dB > -PI / 2 && this->beta + dB < PI / 2) {
+		this->beta += dB;
 	}
 
 	this->pos = this->calcPos();

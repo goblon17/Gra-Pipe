@@ -23,8 +23,6 @@ private:
 	float beta;
 	float resolution;
 
-	int sensitivity = 1;
-
 	glm::vec3 calcPos();
 	float calcAlfa();
 	float calcBeta();
@@ -33,13 +31,15 @@ public:
 	glm::mat4 Vmat;
 	glm::mat4 Pmat;
 	float aspectRatio;
+	int sensitivity = 1;
+	int maxSensitivity = 5;
 
 	glm::mat4 calculateVmat();
 	glm::mat4 calculatePmat();
 
 	Camera(glm::vec3 pos, glm::vec3 target, glm::vec3 up, float FOV, float aspectRatio, float closePlane, float fatPlane);
 
-	void changePos(double dX, double dY);
+	void changePos(double dX, double dY, int withSens);
 	void changePos(double dScroll);
 	void resize(float aspectRatio);
 };
