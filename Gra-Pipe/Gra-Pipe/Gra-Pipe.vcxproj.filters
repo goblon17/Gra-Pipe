@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Pliki źródłowe">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Pliki nagłówkowe">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Pliki zasobów">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Pliki nagłówkowe\scenes">
-      <UniqueIdentifier>{89d736dd-e3ed-4b45-9dfa-ead1d327343f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Pliki źródłowe\scenes">
-      <UniqueIdentifier>{3bbaca6d-2cba-41b7-a299-5229331ad07b}</UniqueIdentifier>
+    <Filter Include="scenes">
+      <UniqueIdentifier>{90029ccf-c873-4cf7-bc79-f4f6534c17e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,15 +45,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="scenes\Menu.cpp">
-      <Filter>Pliki źródłowe\scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="scenes\Pause.cpp">
-      <Filter>Pliki źródłowe\scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="scenes\Play.cpp">
-      <Filter>Pliki źródłowe\scenes</Filter>
-    </ClCompile>
     <ClCompile Include="lodepng.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -65,6 +53,18 @@
     </ClCompile>
     <ClCompile Include="Utility2.cpp">
       <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\Menu.cpp">
+      <Filter>scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\Pause.cpp">
+      <Filter>scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\Play.cpp">
+      <Filter>scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\Settings.cpp">
+      <Filter>scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,17 +101,20 @@
     <ClInclude Include="Game.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="scenes\Menu.h">
-      <Filter>Pliki nagłówkowe\scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="scenes\Pause.h">
-      <Filter>Pliki nagłówkowe\scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="scenes\Play.h">
-      <Filter>Pliki nagłówkowe\scenes</Filter>
-    </ClInclude>
     <ClInclude Include="Utility2.h">
       <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Menu.h">
+      <Filter>scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Pause.h">
+      <Filter>scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Play.h">
+      <Filter>scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Settings.h">
+      <Filter>scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

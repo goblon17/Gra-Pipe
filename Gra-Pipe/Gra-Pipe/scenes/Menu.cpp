@@ -24,7 +24,7 @@ void Menu::Draw(double dTime, ShaderProgram* guiShader) {
 	for (Button* b : this->buttons) {
 		b->Draw(this->camera, guiShader);
 	}
-	this->camera->changePos(dTime * this->rotationSpeed, 0);
+	this->camera->changePos(dTime * rotationSpeed, 0);
 }
 
 void Menu::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
@@ -59,7 +59,7 @@ void Menu::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 			}
 			case 1: {
 				printf("Ustawienia\n");
-				game->setCurrentState(GAME_SCENE_PLAY);
+				game->setCurrentState(GAME_SCENE_SETTINGS);
 				break;
 			}
 			case 2: {

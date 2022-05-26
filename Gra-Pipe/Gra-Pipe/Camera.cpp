@@ -49,7 +49,7 @@ float Camera::calcBeta() {
 }
 
 void Camera::changePos(double dX, double dY) {
-	this->alfa += dX * PI / 180.0f;
+	this->alfa += dX * PI / 180.0f / this->sensitivity;
 	if (this->alfa > PI) {
 		this->alfa -= 2 * PI;
 	}
@@ -57,8 +57,8 @@ void Camera::changePos(double dX, double dY) {
 		this->alfa += 2 * PI;
 	}
 
-	if (this->beta + dY * PI / 180.0f > -PI / 2 && this->beta + dY * PI / 180.0f < PI / 2) {
-		this->beta += dY * PI / 180.0f;
+	if (this->beta + dY * PI / 180.0f / this->sensitivity > -PI / 2 && this->beta + dY * PI / 180.0f / this->sensitivity < PI / 2) {
+		this->beta += dY * PI / 180.0f / this->sensitivity;
 	}
 
 	this->pos = this->calcPos();

@@ -23,6 +23,8 @@ private:
 	float beta;
 	float resolution;
 
+	int sensitivity = 1;
+
 	glm::vec3 calcPos();
 	float calcAlfa();
 	float calcBeta();

@@ -1,5 +1,5 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef SETTINGS_H
+#define SETTINGS_H
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -11,13 +11,13 @@
 #include "Scene.h"
 #include "Utility2.h"
 
-class Menu : public Scene
+class Settings : public Scene
 {
 private:
-	
+
 public:
-	Menu(WindowSize* winSize, CursorState* cursor, Camera* camera);
-	~Menu();
+	Settings(WindowSize* winSize, CursorState* cursor, Camera* camera);
+	~Settings();
 	void Draw(double dTime, ShaderProgram* guiShader);
 	void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods, Game* game);
 	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos);

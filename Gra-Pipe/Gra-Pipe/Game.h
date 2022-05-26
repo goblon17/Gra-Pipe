@@ -9,6 +9,7 @@
 #include "scenes/Menu.h"
 #include "scenes/Play.h"
 #include "scenes/Pause.h"
+#include "scenes/Settings.h"
 
 class Game
 {

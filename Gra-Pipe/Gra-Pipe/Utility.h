@@ -8,6 +8,8 @@
 
 const float PI = 3.141592653589793f;
 
+const double rotationSpeed = PI;
+
 const int GAME_SCENE_MENU = 0;
 const int GAME_SCENE_PLAY = 1;
 const int GAME_SCENE_PAUSE = 2;
