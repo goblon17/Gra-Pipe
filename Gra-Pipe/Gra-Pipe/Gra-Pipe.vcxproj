@@ -141,6 +141,7 @@
     <ClCompile Include="GUItexture.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MultipleStateButton.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scenes\Menu.cpp" />
     <ClCompile Include="scenes\Pause.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUItexture.h" />
     <ClInclude Include="lodepng.h" />
+    <ClInclude Include="MultipleStateButton.h" />
     <ClInclude Include="myCube.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scenes\Menu.h" />

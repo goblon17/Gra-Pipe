@@ -8,6 +8,7 @@
 #include "Utility.h"
 #include "Camera.h"
 #include "Button.h"
+#include "MultipleStateButton.h"
 #include "Scene.h"
 #include "Utility2.h"
 
@@ -16,6 +17,7 @@ class Settings : public Scene
 private:
 
 public:
+	int sensitivity = 0;
 	Settings(WindowSize* winSize, CursorState* cursor, Camera* camera);
 	~Settings();
 	void Draw(double dTime, ShaderProgram* guiShader);

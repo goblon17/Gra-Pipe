@@ -66,6 +66,9 @@
     <ClCompile Include="scenes\Settings.cpp">
       <Filter>scenes</Filter>
     </ClCompile>
+    <ClCompile Include="MultipleStateButton.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shaderprogram.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="scenes\Settings.h">
       <Filter>scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MultipleStateButton.h">
+      <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
