@@ -122,11 +122,11 @@ void Board::rotate(int n, tile* t) {
 
 void Board::printBoard() {
 	int x = 2;
-	int y = 4;
+	int y = 13;
 
-	gotoxy(2, 2);
+	gotoxy(2, y - 2);
 	printf("Correct Board:");
-	gotoxy(this->size * 5 + 4, 2);
+	gotoxy(this->size * 5 + 4, y - 2);
 	printf("Current Board:");
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
@@ -149,7 +149,7 @@ void Board::printBoard() {
 	
 	
 	x = this->size * 5 + 4;
-	y = 4;
+	y = 13;
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
 			int type = this->grid[i][j]->currentValue;

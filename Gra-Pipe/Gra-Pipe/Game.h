@@ -6,6 +6,7 @@
 #include "Utility.h"
 #include "Camera.h"
 #include "Scene.h"
+#include "Board3D.h"
 #include "scenes/Menu.h"
 #include "scenes/Play.h"
 #include "scenes/Pause.h"
@@ -21,8 +22,10 @@ private:
 	std::vector<Scene*> scenes;
 	WindowSize* winSize = nullptr;
 	CursorState* cursor = nullptr;
+	int board_size;
+	Board3D* board;
 public:
-	Game(WindowSize* winSize, CursorState* cursor, Camera* camera);
+	Game(WindowSize* winSize, CursorState* cursor, Camera* camera, int board_size);
 	~Game();
 	void setCurrentState(int state);
 	void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);

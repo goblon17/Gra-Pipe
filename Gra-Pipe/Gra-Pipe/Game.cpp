@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera) {
+Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera, int board_size) {
 	this->winSize = winSize;
 	this->cursor = cursor;
 	this->camera = camera;
@@ -10,6 +10,10 @@ Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera) {
 	this->scenes.push_back(new Play(winSize, cursor, camera));
 	this->scenes.push_back(new Pause(winSize, cursor, camera));
 	this->scenes.push_back(new Settings(winSize, cursor, camera));
+
+
+	this->board_size = board_size;
+	this->board = new Board3D(this->board_size);
 }
 
 Game::~Game() {
@@ -18,6 +22,7 @@ Game::~Game() {
 	for (Scene* s : this->scenes) {
 		delete s;
 	}
+	delete this->board;
 }
 
 void Game::setCurrentState(int state) {
@@ -29,8 +34,9 @@ void Game::Draw(double dTime) {
 
 	//zmiany.begin()
 	//narazie u¿y³em lamberta ¿eby cokolwiek zobaczyæ
+	//to poni¿ej trzeba zmieniæ
 	
-
+	this->board->drawBoard(1.0);
 
 	//zmieny.end()
 

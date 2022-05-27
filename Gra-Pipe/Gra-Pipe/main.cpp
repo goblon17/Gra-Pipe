@@ -96,7 +96,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetScrollCallback(*window, scrollCallback);
 
 	cursor = new CursorState;
-	game = new Game(winSize, cursor, camera);
+	game = new Game(winSize, cursor, camera, board_size);
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {

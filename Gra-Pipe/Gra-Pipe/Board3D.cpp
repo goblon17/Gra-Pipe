@@ -1,15 +1,17 @@
 #include "Board3D.h"
 
 Board3D::Board3D(int size) : Board(size) {
-	this->modelShader = new ShaderProgram("shaders/model_v_lambert.glsl", NULL, "shaders/model_f_lambert.glsl");
-	this->model_board = new PipeModel ** [this->size];
+	this->model_board = new TileModel ** [this->size];
 	for (int i = 0; i < this->size; i++) {
-		this->model_board[i] = new PipeModel * [this->size];
+		this->model_board[i] = new TileModel * [this->size];
 		for (int j = 0; j < this->size; j++) {
-			this->model_board[i][j] = new PipeModel(this->grid[i][j]->currentValue, i, j);
-			//this->model_board[i][j]
+			this->model_board[i][j] = new TileModel(this->grid[i][j]->currentValue, i, j);
 		}
 	}
+	this->modelShader = new ShaderProgram("shaders/model_v_lambert.glsl", NULL, "shaders/model_f_lambert.glsl");
+	this->Board::generate();
+	this->Board::shuffleBoard();
+	this->Board::printBoard();
 }
 
 Board3D::~Board3D() {
@@ -24,23 +26,12 @@ Board3D::~Board3D() {
 void Board3D::initModels() {
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
-
+			this->model_board[i][j]->value = this->grid[i][j]->currentValue;
 		}
 	}
 }
 
-void Board3D::drawBoard(glm::mat4 P, glm::mat4 V, double tTime) {
-	this->modelShader->use();
-	glUniformMatrix4fv(this->modelShader->u("P"), 1, false, glm::value_ptr(P));
-	glUniformMatrix4fv(this->modelShader->u("P"), 1, false, glm::value_ptr(P));
-
-	for (int i = 0; i < this->size; i++) {
-		for (int j = 0; j < this->size; j++) {
-			glm::mat4 modelMatrix = glm::mat4(1.0f);
-			glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(modelMatrix));
-			glUniform4f(this->modelShader->u("color"), 1, 1, 0, 1);
-			this->model_board[i][j]->center.drawSolid();
-		}
-	}
-
+void Board3D::drawBoard(double tTime) {
+	//rysyj ka¿dy model po kolei?
+	//dunno ³ot to do here
 }

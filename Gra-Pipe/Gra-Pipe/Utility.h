@@ -7,7 +7,7 @@
 #include "lodepng.h"
 
 const float PI = 3.141592653589793f;
-
+const int board_size = 5;
 const double rotationSpeed = PI;
 
 const int GAME_SCENE_MENU = 0;
@@ -15,12 +15,6 @@ const int GAME_SCENE_PLAY = 1;
 const int GAME_SCENE_PAUSE = 2;
 const int GAME_SCENE_SETTINGS = 3;
 const int GAME_SCENE_WIN = 4;
-
-const glm::vec2 north(0, -1);
-const glm::vec2 east(0, 1);
-const glm::vec2 south(1, 0);
-const glm::vec2 west(-1, 0);
-const glm::vec2 directions[4] = {north, east, south, west};
 
 struct CursorState {
 	double oldX = 0;
