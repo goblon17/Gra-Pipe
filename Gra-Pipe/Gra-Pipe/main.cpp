@@ -115,13 +115,6 @@ void drawScene(GLFWwindow* window, double dTime) {
 }
 
 int main() {
-	//init board
-	Board b(5);
-	b.generate();
-	b.shuffleBoard();
-	b.printBoard();	
-	printf("is won?: %d\n", checkWin(&b));
-
 	GLFWwindow* window = nullptr;
 
 	initOpenGLProgram(&window);

@@ -141,7 +141,9 @@
     <ClCompile Include="GUItexture.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="MultipleStateButton.cpp" />
+    <ClCompile Include="PipeModel.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scenes\Menu.cpp" />
     <ClCompile Include="scenes\Pause.cpp" />
@@ -149,8 +151,10 @@
     <ClCompile Include="scenes\Settings.cpp" />
     <ClCompile Include="shaderprogram.cpp" />
     <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Utility2.cpp" />
+    <ClCompile Include="Board3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
@@ -158,14 +162,18 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUItexture.h" />
     <ClInclude Include="lodepng.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="MultipleStateButton.h" />
     <ClInclude Include="myCube.h" />
+    <ClInclude Include="Board3D.h" />
+    <ClInclude Include="PipeModel.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scenes\Menu.h" />
     <ClInclude Include="scenes\Pause.h" />
     <ClInclude Include="scenes\Play.h" />
     <ClInclude Include="scenes\Settings.h" />
     <ClInclude Include="Skybox.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="shaderprogram.h" />

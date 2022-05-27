@@ -27,6 +27,13 @@ void Game::setCurrentState(int state) {
 void Game::Draw(double dTime) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	//zmiany.begin()
+	//narazie u¿y³em lamberta ¿eby cokolwiek zobaczyæ
+	
+
+
+	//zmieny.end()
+
 	this->skybox->Draw(this->camera);
 	this->scenes.at(this->currentState)->Draw(dTime, this->guiShader);
 }

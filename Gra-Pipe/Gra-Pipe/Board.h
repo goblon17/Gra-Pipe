@@ -10,7 +10,7 @@
 
 class Board
 {
-private:
+protected:
 	int size;
 	//2D board matrix of tuples
 	tile ***grid;
@@ -23,7 +23,10 @@ public:
 	void rotate(int n, tile *t);
 	friend bool checkWin(Board *b);
 	void printBoard();
+	int getSize();
+	tile*** getGrid();
 	Board(int size);
+	Board() = default;
 	~Board();
 };
 

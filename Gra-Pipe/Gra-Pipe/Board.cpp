@@ -178,3 +178,11 @@ bool checkWin(Board *b) {
 				return false;
 	return true;
 }
+
+int Board::getSize() {
+	return this->size;
+}
+
+tile*** Board::getGrid() {
+	return this->grid;
+}
