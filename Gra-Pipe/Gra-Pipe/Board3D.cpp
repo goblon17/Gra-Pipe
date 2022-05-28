@@ -10,8 +10,9 @@ Board3D::Board3D(int size) : Board(size) {
 	}
 	this->modelShader = new ShaderProgram("shaders/model_v_lambert.glsl", NULL, "shaders/model_f_lambert.glsl");
 	this->Board::generate();
-	this->Board::shuffleBoard();
+	//this->Board::shuffleBoard();
 	this->Board::printBoard();
+	this->initModels();
 }
 
 Board3D::~Board3D() {
@@ -27,11 +28,57 @@ void Board3D::initModels() {
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
 			this->model_board[i][j]->value = this->grid[i][j]->currentValue;
+			this->model_board[i][j]->initModel();
 		}
 	}
 }
 
-void Board3D::drawBoard(double tTime) {
-	//rysyj ka¿dy model po kolei?
-	//dunno ³ot to do here
+void Board3D::drawBoard(Camera *camera, double tTime) {
+	//narazie u¿y³em lamberta
+
+	this->modelShader->use();
+	glUniformMatrix4fv(this->modelShader->u("P"), 1, false, glm::value_ptr(camera->Pmat));
+	glUniformMatrix4fv(this->modelShader->u("V"), 1, false, glm::value_ptr(camera->Vmat));
+	
+	glm::mat4 M = glm::mat4(1.0f);
+	
+	for (int i = 0; i < this->size; i++) {
+		for (int j = 0; j < this->size; j++) {
+			M = glm::mat4(1.0f);
+			M = glm::translate(M, glm::vec3((j - this->size * 0.5 + 0.5f) * 0.5f, 0.0f, (i - this->size * 0.5f + 0.5f) * 0.5f));
+			glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M));
+
+			if (this->grid[j][i]->isTarget) glUniform4f(this->modelShader->u("color"), 0, 1, 0, 1);
+			else if (this->grid[j][i]->isSource) glUniform4f(this->modelShader->u("color"), 1, 0, 0, 1);
+			else glUniform4f(this->modelShader->u("color"), 1, 1, 0, 1);
+			this->model_board[j][i]->center->drawSolid();
+			
+			glm::mat4 M1 = M;
+			for (auto k : this->model_board[j][i]->pipes) {
+				if (this->model_board[j][i]->value & 1) {
+					M1 = glm::translate(M, glm::vec3(0.0f, 0.0f, -0.15f));
+					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
+					k->draw();
+				}
+				if (this->model_board[j][i]->value & 2) {
+					M1 = glm::translate(M, glm::vec3(0.15f, 0.0f, 0.0f));
+					M1 = glm::rotate(M1, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
+					k->draw();
+				}
+				if (this->model_board[j][i]->value & 4) {
+					M1 = glm::translate(M, glm::vec3(0.0f, 0.0f, 0.15f));
+					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
+					k->draw();
+				}
+				if (this->model_board[j][i]->value & 8) {
+					M1 = glm::translate(M, glm::vec3(-0.15f, 0.0f, 0.0f));
+					M1 = glm::rotate(M1, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
+					k->draw();
+				}
+			}
+			
+		}
+	}
 }

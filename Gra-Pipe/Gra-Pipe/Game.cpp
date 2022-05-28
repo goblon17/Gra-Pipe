@@ -33,10 +33,8 @@ void Game::Draw(double dTime) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//zmiany.begin()
-	//narazie u¿y³em lamberta ¿eby cokolwiek zobaczyæ
-	//to poni¿ej trzeba zmieniæ
 	
-	this->board->drawBoard(1.0);
+	this->board->drawBoard(this->camera, 1.0);
 
 	//zmieny.end()
 

@@ -143,7 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="MultipleStateButton.cpp" />
-    <ClCompile Include="Pipe.cpp" />
+    <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="TileModel.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scenes\Menu.cpp" />
@@ -167,7 +167,7 @@
     <ClInclude Include="MultipleStateButton.h" />
     <ClInclude Include="myCube.h" />
     <ClInclude Include="Board3D.h" />
-    <ClInclude Include="Pipe.h" />
+    <ClInclude Include="Cylinder.h" />
     <ClInclude Include="TileModel.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scenes\Menu.h" />

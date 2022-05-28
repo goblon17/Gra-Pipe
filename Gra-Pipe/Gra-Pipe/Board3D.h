@@ -4,15 +4,16 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Board.h"
 #include "TileModel.h"
+#include "Sphere.h"
+#include "Camera.h"
 
 
 class Board3D : public Board {
 	TileModel*** model_board;
 	ShaderProgram* modelShader;
-	
 public:
 	void initModels();
-	void drawBoard(double tTime);
+	void drawBoard(Camera *camera, double tTime);
 	Board3D(int size);
 	~Board3D();
 };
