@@ -9,9 +9,9 @@ Board3D::Board3D(int size) : Board(size) {
 		}
 	}
 	this->modelShader = new ShaderProgram("shaders/model_v_lambert.glsl", NULL, "shaders/model_f_lambert.glsl");
-	this->Board::generate();
+	this->generate();
 	//this->Board::shuffleBoard();
-	this->Board::printBoard();
+	this->printBoard();
 	this->initModels();
 }
 

@@ -22,8 +22,8 @@ private:
 	WindowSize* winSize = nullptr;
 	CursorState* cursor = nullptr;
 	int board_size;
-	Board3D* board;
 public:
+	Board3D* board;
 	Camera* camera;
 	Game(WindowSize* winSize, CursorState* cursor, Camera* camera, int board_size);
 	~Game();
@@ -33,6 +33,7 @@ public:
 	void scrollCallback(GLFWwindow* window, double xOffset, double yOffset);
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void Draw(double dTime);
+	glm::vec2 caclMouseToWorld();
 };
 
 #endif

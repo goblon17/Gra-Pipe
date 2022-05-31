@@ -57,3 +57,7 @@ void Game::scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
 void Game::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	this->scenes.at(this->currentState)->keyCallback(window, key, scancode, action, mods);
 }
+
+glm::vec2 Game::caclMouseToWorld() {
+
+}
