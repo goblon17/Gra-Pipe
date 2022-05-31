@@ -70,7 +70,9 @@ void Settings::mouseButtonCallback(GLFWwindow* window, int button, int action, i
 			case 1: {
 				this->buttons.at(1)->nextState();
 				this->sensitivity = this->buttons.at(1)->state;
+				int nS = this->buttons.at(1)->n;
 				printf("Czulost: %d\n", this->sensitivity);
+				game->camera->sensitivity = game->camera->maxSensitivity - this->sensitivity * game->camera->maxSensitivity / nS;
 			}
 			}
 		}

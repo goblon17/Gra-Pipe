@@ -3,6 +3,7 @@
 MultipleStateButton::MultipleStateButton(int n, ...) {
 	va_list args;
 	va_start(args, n);
+	this->n = n;
 	for (int i = 0; i < n; i++) {
 		this->buttons.push_back(va_arg(args, Button*));
 	}

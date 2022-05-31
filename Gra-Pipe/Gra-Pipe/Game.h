@@ -17,7 +17,6 @@ class Game
 private:
 	ShaderProgram* guiShader;
 	Skybox* skybox;
-	Camera* camera;
 	int currentState = GAME_SCENE_MENU;
 	std::vector<Scene*> scenes;
 	WindowSize* winSize = nullptr;
@@ -25,6 +24,7 @@ private:
 	int board_size;
 	Board3D* board;
 public:
+	Camera* camera;
 	Game(WindowSize* winSize, CursorState* cursor, Camera* camera, int board_size);
 	~Game();
 	void setCurrentState(int state);

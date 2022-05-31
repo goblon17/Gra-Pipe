@@ -44,11 +44,6 @@ void Game::Draw(double dTime) {
 
 void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
 	this->scenes.at(this->currentState)->mouseButtonCallback(window, button, action, mods, this);
-	if (this->currentState == GAME_SCENE_SETTINGS) {
-		Settings* a = (Settings*)this->scenes.at(this->currentState);
-		int nS = 5;
-		this->camera->sensitivity = this->camera->maxSensitivity - a->sensitivity * this->camera->maxSensitivity / nS;
-	}
 }
 
 void Game::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {

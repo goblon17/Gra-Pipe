@@ -18,6 +18,7 @@ private:
 public:
 	int state = 0;
 	bool isSeleced = false;
+	int n = 2;
 	Button(const char* normal_texture, const char* highlighted_texture, glm::vec2 pos, glm::vec2 size);
 	Button() {};
 	~Button();
