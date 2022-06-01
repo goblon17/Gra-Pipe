@@ -71,6 +71,9 @@ void Camera::changePos(double dX, double dY, int withSens) {
 }
 
 void Camera::changePos(double dScroll) {
+	if (this->radius - dScroll < 0 || this->radius - dScroll > 10) {
+		return;
+	}
 	this->radius -= dScroll;
 	this->pos = this->calcPos();
 	this->Vmat = this->calculateVmat();
