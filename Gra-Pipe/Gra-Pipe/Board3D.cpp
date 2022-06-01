@@ -33,8 +33,8 @@ void Board3D::initModels() {
 	}
 }
 
-void Board3D::drawBoard(Camera *camera, double tTime) {
-	//narazie u¿y³em lamberta
+void Board3D::drawBoard(Camera *camera, double dTime) {
+	//narazie uï¿½yï¿½em lamberta
 
 	this->modelShader->use();
 	glUniformMatrix4fv(this->modelShader->u("P"), 1, false, glm::value_ptr(camera->Pmat));

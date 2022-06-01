@@ -10,10 +10,11 @@
 
 class Board3D : public Board {
 	TileModel*** model_board;
-	ShaderProgram* modelShader;
+	
 public:
+	ShaderProgram* modelShader;
 	void initModels();
-	void drawBoard(Camera *camera, double tTime);
+	void drawBoard(Camera *camera, double dTime);
 	Board3D(int size);
 	~Board3D();
 };

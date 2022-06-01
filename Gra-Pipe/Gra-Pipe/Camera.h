@@ -10,15 +10,9 @@
 class Camera
 {
 private:
-	glm::vec3 pos;
 	glm::vec3 target;
 	glm::vec3 up;
 
-	float FOV;
-	float closePlane;
-	float farPlane;
-
-	float radius;
 	float alfa;
 	float beta;
 	float resolution;
@@ -28,8 +22,13 @@ private:
 	float calcBeta();
 
 public:
+	glm::vec3 pos;
 	glm::mat4 Vmat;
 	glm::mat4 Pmat;
+	float closePlane;
+	float farPlane;
+	float FOV;
+	float radius;
 	float aspectRatio;
 	int sensitivity = 1;
 	int maxSensitivity = 5;

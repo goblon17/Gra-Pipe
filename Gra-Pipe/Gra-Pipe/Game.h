@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include <vector>
 #include "shaderprogram.h"
 #include "Utility.h"
@@ -11,6 +13,7 @@
 #include "scenes/Play.h"
 #include "scenes/Pause.h"
 #include "scenes/Settings.h"
+#include "Sphere.h"
 
 class Game
 {
@@ -33,7 +36,7 @@ public:
 	void scrollCallback(GLFWwindow* window, double xOffset, double yOffset);
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void Draw(double dTime);
-	glm::vec2 caclMouseToWorld();
+	glm::vec3 caclMouseToWorld(float y);
 };
 
 #endif

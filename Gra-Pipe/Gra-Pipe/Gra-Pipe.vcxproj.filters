@@ -154,22 +154,22 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\f_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
-    </None>
     <None Include="shaders\skybox_f_shader.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
     <None Include="shaders\skybox_v_shader.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
-    <None Include="shaders\v_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
-    </None>
     <None Include="shaders\gui_f_shader.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
     <None Include="shaders\gui_v_shader.glsl">
+      <Filter>Pliki zasobów</Filter>
+    </None>
+    <None Include="shaders\model_f_lambert.glsl">
+      <Filter>Pliki zasobów</Filter>
+    </None>
+    <None Include="shaders\model_v_lambert.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
   </ItemGroup>
