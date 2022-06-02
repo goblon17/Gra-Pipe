@@ -30,7 +30,7 @@ public:
 	float FOV;
 	float radius;
 	float aspectRatio;
-	int sensitivity = 1;
+	int sensitivity = 5;
 	int maxSensitivity = 5;
 
 	glm::mat4 calculateVmat();
