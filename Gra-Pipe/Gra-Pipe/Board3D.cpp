@@ -1,6 +1,9 @@
 #include "Board3D.h"
 
-Board3D::Board3D(int size) : Board(size) {
+Board3D::Board3D(Camera* camera, WindowSize* winSize, int size) : Board(size) {
+	this->camera = camera;
+	this->winSize = winSize;
+	
 	this->model_board = new TileModel ** [this->size];
 	for (int i = 0; i < this->size; i++) {
 		this->model_board[i] = new TileModel * [this->size];
@@ -33,12 +36,12 @@ void Board3D::initModels() {
 	}
 }
 
-void Board3D::drawBoard(Camera *camera, double dTime) {
+void Board3D::drawBoard(double dTime) {
 	//narazie u�y�em lamberta
 
 	this->modelShader->use();
-	glUniformMatrix4fv(this->modelShader->u("P"), 1, false, glm::value_ptr(camera->Pmat));
-	glUniformMatrix4fv(this->modelShader->u("V"), 1, false, glm::value_ptr(camera->Vmat));
+	glUniformMatrix4fv(this->modelShader->u("P"), 1, false, glm::value_ptr(this->camera->Pmat));
+	glUniformMatrix4fv(this->modelShader->u("V"), 1, false, glm::value_ptr(this->camera->Vmat));
 	
 	glm::mat4 M = glm::mat4(1.0f);
 	
@@ -81,4 +84,16 @@ void Board3D::drawBoard(Camera *camera, double dTime) {
 			
 		}
 	}
+}
+
+void Board3D::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
+	glm::vec3 mousePos = caclMouseToWorld(this->camera, this->winSize, xPos, yPos, 0); // Tu masz pozycje w swiecie
+}
+
+void Board3D::leftMouseButton() {
+
+}
+
+void Board3D::rightMouseButton() {
+
 }

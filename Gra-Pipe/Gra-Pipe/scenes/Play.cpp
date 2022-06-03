@@ -1,12 +1,13 @@
 #include "Play.h"
 
-Play::Play(WindowSize* winSize, CursorState* cursor, Camera* camera) {
+Play::Play(WindowSize* winSize, CursorState* cursor, Camera* camera, Board3D* board) {
 	this->logo = nullptr;
 	this->buttons.push_back(new Button("textures/gui/pause_normal.png", "textures/gui/pause_highlight.png", glm::vec2(0.55, 0.85), glm::vec2(0.45, 0.15)));
 
 	this->winSize = winSize;
 	this->cursor = cursor;
 	this->camera = camera;
+	this->board = board;
 }
 
 Play::~Play() {
@@ -25,6 +26,7 @@ void Play::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	for (Button* b : this->buttons) {
 		b->mousePosCallback(window, xPos, yPos, this->winSize);
 	}
+	this->board->cursorPosCallback(window, xPos, yPos);
 	if (this->cursor->middle) {
 		camera->changePos(this->cursor->curX - this->cursor->oldX, this->cursor->curY - this->cursor->oldY, 1);
 	}
@@ -56,6 +58,11 @@ void Play::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 				game->setCurrentState(GAME_SCENE_PAUSE);
 				break;
 			}
+			case -1: {
+				printf("Plansza\n");
+				this->board->leftMouseButton();
+				break;
+			}
 			}
 		}
 		break;
@@ -66,6 +73,14 @@ void Play::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 		}
 		else if (action == GLFW_RELEASE) {
 			cursor->right = 0;
+			int id = this->getHighlightedID();
+			switch (id) {
+			case -1: {
+				printf("azsnalP\n");
+				this->board->rightMouseButton();
+				break;
+			}
+			}
 		}
 		break;
 	}

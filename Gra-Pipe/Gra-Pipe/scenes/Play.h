@@ -8,15 +8,17 @@
 #include "Camera.h"
 #include "Button.h"
 #include "Scene.h"
+#include "Board3D.h"
 #include "Utility2.h"
 
+class Board3D;
 
 class Play : public Scene
 {
 private:
-
+	Board3D* board;
 public:
-	Play(WindowSize* winSize, CursorState* cursor, Camera* camera);
+	Play(WindowSize* winSize, CursorState* cursor, Camera* camera, Board3D* board);
 	~Play();
 	void Draw(double dTime, ShaderProgram* guiShader);
 	void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods, Game* game);
