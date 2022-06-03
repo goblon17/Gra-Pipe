@@ -30,11 +30,7 @@ void Game::setCurrentState(int state) {
 void Game::Draw(double dTime) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//zmiany.begin()
-
 	this->board->drawBoard(dTime);
-
-	//zmieny.end()
 
 	this->skybox->Draw(this->camera);
 	this->scenes.at(this->currentState)->Draw(dTime, this->guiShader);

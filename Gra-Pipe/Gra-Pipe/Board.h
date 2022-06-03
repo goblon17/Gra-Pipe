@@ -21,7 +21,7 @@ public:
 	void setConnections();
 	void shuffleBoard();
 	void rotate(int n, tile *t);
-	friend bool checkWin(Board *b);
+	bool checkWin();
 	void printBoard();
 	int getSize();
 	tile*** getGrid();

@@ -13,10 +13,12 @@ class Board3D : public Board {
 	TileModel*** model_board;
 	Camera* camera;
 	WindowSize* winSize;
+	std::vector<int> gridPos;
 public:
 	ShaderProgram* modelShader;
 	void initNewBoard(int size);
 	void initModels();
+	std::vector<int> calcWorldToGrid(glm::vec3 mousePos);
 	void drawBoard(double dTime);
 	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos); // Ustawiaj flage na danym klocku ze jest podswietlony
 	void leftMouseButton(); // Wyszukaj podswietlony klocek i go obroc

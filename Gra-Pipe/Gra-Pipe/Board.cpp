@@ -180,12 +180,19 @@ void Board::printBoard() {
 		y += 3;
 	}
 	printf("\n\n");
+
+	for (int i = 0; i < this->size; i++) {
+		for (int j = 0; j < this->size; j++)
+			printf("%3d ",this->grid[i][j]->currentValue);
+		printf("\n");
+	}
+		
 }
 
-bool checkWin(Board *b) {
-	for (int i = 0; i < b->size; i++)
-		for (int j = 0; j < b->size; j++)
-			if (b->grid[i][j]->correctValue != b->grid[i][j]->currentValue)
+bool Board::checkWin() {
+	for (int i = 0; i < this->size; i++)
+		for (int j = 0; j < this->size; j++)
+			if (this->grid[i][j]->correctValue != this->grid[i][j]->currentValue)
 				return false;
 	return true;
 }
