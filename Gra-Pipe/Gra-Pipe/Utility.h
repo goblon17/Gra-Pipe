@@ -7,8 +7,20 @@
 #include "lodepng.h"
 
 const float PI = 3.141592653589793f;
-const int board_size = 5;
+const int board_size = 4;
 const double rotationSpeed = PI;
+
+const float tile_sphere_radius = 0.08f;
+const int tile_sphere_meridians = 20;
+const int tile_sphere_parallels = 20;
+const float tile_pipe_up_base_radius = 0.05f;
+const float tile_pipe_down_base_radius = 0.05f;
+const float tile_pipe_height = 0.2f;
+const int tile_pipe_sectors = 20;
+const int tile_pipe_stacks = 10;
+const bool tile_pipe_smooth = 1;
+const float tile_pipe_center_shift = 0.15f;
+const float model_size = 2.0f * (tile_pipe_height + tile_pipe_center_shift - tile_pipe_height * 0.5f);
 
 const int GAME_SCENE_MENU = 0;
 const int GAME_SCENE_PLAY = 1;

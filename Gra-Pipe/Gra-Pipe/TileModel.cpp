@@ -1,11 +1,12 @@
 #include "TileModel.h"
 #include "glm/ext/matrix_transform.hpp"
+#include "Utility.h"
 
 TileModel::TileModel(int val, int x, int y) {
 	this->value = val;
 	this->x = x;
 	this->y = y;
-	this->center = new Models::Sphere(0.08, 20, 20);
+	this->center = new Models::Sphere(tile_sphere_radius, tile_sphere_meridians, tile_sphere_parallels);
 }
 
 TileModel::~TileModel() {
@@ -18,7 +19,8 @@ TileModel::~TileModel() {
 void TileModel::initModel() {
 	for (int i = 1; i <= 8; i *= 2)
 		if (this->value & i) {
-			pipes.push_back(new Cylinder(0.05f, 0.05f, 0.2f, 15, 10, 1));
+			pipes.push_back(new Cylinder(tile_pipe_up_base_radius, tile_pipe_down_base_radius, tile_pipe_height,
+							tile_pipe_sectors, tile_pipe_stacks, tile_pipe_smooth));
 		}
 }
 

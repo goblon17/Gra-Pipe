@@ -17,6 +17,7 @@ public:
 	ShaderProgram* modelShader;
 	void initNewBoard(int size);
 	void initModels();
+	glm::vec2 calcWorldToGrid(glm::vec3 mousePos);
 	void drawBoard(double dTime);
 	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos); // Ustawiaj flage na danym klocku ze jest podswietlony
 	void leftMouseButton(); // Wyszukaj podswietlony klocek i go obroc
