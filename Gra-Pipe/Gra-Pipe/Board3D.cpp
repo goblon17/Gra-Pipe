@@ -3,19 +3,8 @@
 Board3D::Board3D(Camera* camera, WindowSize* winSize, int size) : Board(size) {
 	this->camera = camera;
 	this->winSize = winSize;
-	
-	this->model_board = new TileModel ** [this->size];
-	for (int i = 0; i < this->size; i++) {
-		this->model_board[i] = new TileModel * [this->size];
-		for (int j = 0; j < this->size; j++) {
-			this->model_board[i][j] = new TileModel(this->grid[i][j]->currentValue, i, j);
-		}
-	}
 	this->modelShader = new ShaderProgram("shaders/model_v_lambert.glsl", NULL, "shaders/model_f_lambert.glsl");
-	this->generate();
-	//this->Board::shuffleBoard();
-	this->printBoard();
-	this->initModels();
+	this->initNewBoard(size);
 }
 
 Board3D::~Board3D() {
@@ -27,11 +16,36 @@ Board3D::~Board3D() {
 	delete this->model_board;
 }
 
+void Board3D::initNewBoard(int size) {
+	this->size = size;
+	this->grid = new tile * *[this->size];
+	for (int i = 0; i < this->size; i++) {
+		this->grid[i] = new tile * [this->size];
+		for (int j = 0; j < this->size; j++) {
+			this->grid[i][j] = new tile(i, j, 0, 0);
+		}
+	}
+	
+	this->generate();
+	this->printBoard();
+
+	this->model_board = new TileModel * *[this->size];
+	for (int i = 0; i < this->size; i++) {
+		this->model_board[i] = new TileModel * [this->size];
+		for (int j = 0; j < this->size; j++) {
+			this->model_board[i][j] = new TileModel(this->grid[i][j]->correctValue, i, j);
+		}
+	}
+	
+	//this->Board::shuffleBoard();
+	this->initModels();
+}
+
 void Board3D::initModels() {
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
-			this->model_board[i][j]->value = this->grid[i][j]->currentValue;
-			this->model_board[i][j]->initModel();
+			this->model_board[j][i]->value = this->grid[i][j]->correctValue;
+			this->model_board[j][i]->initModel();
 		}
 	}
 }
@@ -81,7 +95,6 @@ void Board3D::drawBoard(double dTime) {
 					k->draw();
 				}
 			}
-			
 		}
 	}
 }

@@ -15,6 +15,7 @@ class Board3D : public Board {
 	WindowSize* winSize;
 public:
 	ShaderProgram* modelShader;
+	void initNewBoard(int size);
 	void initModels();
 	void drawBoard(double dTime);
 	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos); // Ustawiaj flage na danym klocku ze jest podswietlony

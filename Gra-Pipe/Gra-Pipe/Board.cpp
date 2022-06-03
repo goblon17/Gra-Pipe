@@ -1,8 +1,7 @@
 #include "Board.h"
 
 //only for tests func
-void gotoxy(int x, int y)
-{
+void gotoxy(int x, int y) {
 	COORD c;
 	c.X = x - 1;
 	c.Y = y - 1;
@@ -30,7 +29,7 @@ Board::~Board() {
 }
 
 void Board::generate() {
-	dfs(this->grid[0][0], 0);
+	dfs(this->grid[rand() % this->size][rand() % this->size], 0);
 
 	printf("Board generated\n");
 	this->setConnections();
@@ -128,9 +127,16 @@ void Board::printBoard() {
 	printf("Correct Board:");
 	gotoxy(this->size * 5 + 4, y - 2);
 	printf("Current Board:");
+
+
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
 			int type = this->grid[i][j]->correctValue;
+
+			gotoxy(x, y); printf("     ");
+			gotoxy(x, y + 1); printf("     ");
+			gotoxy(x, y + 2); printf("     ");
+
 			gotoxy(x + 2, y + 1);
 			if (this->grid[i][j]->isTarget) printf("O");
 			else if (this->grid[i][j]->isSource) printf("S");
@@ -153,6 +159,11 @@ void Board::printBoard() {
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
 			int type = this->grid[i][j]->currentValue;
+
+			gotoxy(x, y); printf("     ");
+			gotoxy(x, y + 1); printf("     ");
+			gotoxy(x, y + 2); printf("     ");
+
 			gotoxy(x + 2, y + 1);
 			if (this->grid[i][j]->isTarget) printf("O");
 			else if (this->grid[i][j]->isSource) printf("S");
