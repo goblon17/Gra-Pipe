@@ -14,6 +14,8 @@ class Board3D : public Board {
 	Camera* camera;
 	WindowSize* winSize;
 	std::vector<int> gridPos;
+	GLuint metalTex;
+	GLuint specTex;
 public:
 	ShaderProgram* modelShader;
 	void initNewBoard(int size);

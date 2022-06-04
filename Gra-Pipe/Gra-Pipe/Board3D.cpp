@@ -6,6 +6,8 @@ Board3D::Board3D(Camera* camera, WindowSize* winSize, int size) : Board(size) {
 	this->modelShader = new ShaderProgram("shaders/model_v_lambert.glsl", NULL, "shaders/model_f_lambert.glsl");
 	this->initNewBoard(size);
 	this->gridPos.reserve(2);
+	this->metalTex = readTexture2D("textures/iron_block.png");
+	this->specTex = readTexture2D("textures/metal_spec.png");
 }
 
 Board3D::~Board3D() {
@@ -58,6 +60,14 @@ void Board3D::drawBoard(double dTime) {
 	glUniformMatrix4fv(this->modelShader->u("P"), 1, false, glm::value_ptr(this->camera->Pmat));
 	glUniformMatrix4fv(this->modelShader->u("V"), 1, false, glm::value_ptr(this->camera->Vmat));
 	
+	glUniform1i(this->modelShader->u("mainTexture"), 0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, this->metalTex);
+
+	glUniform1i(this->modelShader->u("specTexture"), 1);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, this->specTex);
+	
 	glm::mat4 M = glm::mat4(1.0f);
 	
 	for (int i = 0; i < this->size; i++) {
@@ -68,30 +78,38 @@ void Board3D::drawBoard(double dTime) {
 
 			if (this->grid[i][j]->isTarget) glUniform4f(this->modelShader->u("color"), 0, 1, 0, 1);
 			else if (this->grid[i][j]->isSource) glUniform4f(this->modelShader->u("color"), 1, 0, 0, 1);
-			else glUniform4f(this->modelShader->u("color"), 1, 1, 0, 1);
+			else glUniform4f(this->modelShader->u("color"), 1, 1, 1, 1);
 			this->model_board[j][i]->center->drawSolid();
 			
 			glm::mat4 M1 = M;
 			for (auto k : this->model_board[j][i]->pipes) {
 				if (this->model_board[j][i]->value & 1) {
 					M1 = glm::translate(M, glm::vec3(0.0f, 0.0f, -tile_pipe_center_shift));
+					M1 = glm::rotate(M1, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+					glUniform4f(this->modelShader->u("color"), 1, 1, 1, 1);
 					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
 					k->draw();
 				}
 				if (this->model_board[j][i]->value & 2) {
 					M1 = glm::translate(M, glm::vec3(tile_pipe_center_shift, 0.0f, 0.0f));
 					M1 = glm::rotate(M1, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+					M1 = glm::rotate(M1, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+					glUniform4f(this->modelShader->u("color"), 1, 1, 1, 1);
 					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
 					k->draw();
 				}
 				if (this->model_board[j][i]->value & 4) {
 					M1 = glm::translate(M, glm::vec3(0.0f, 0.0f, tile_pipe_center_shift));
+					M1 = glm::rotate(M1, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+					glUniform4f(this->modelShader->u("color"), 1, 1, 1, 1);
 					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
 					k->draw();
 				}
 				if (this->model_board[j][i]->value & 8) {
 					M1 = glm::translate(M, glm::vec3(-tile_pipe_center_shift, 0.0f, 0.0f));
 					M1 = glm::rotate(M1, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+					M1 = glm::rotate(M1, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+					glUniform4f(this->modelShader->u("color"), 1, 1, 1, 1);
 					glUniformMatrix4fv(this->modelShader->u("M"), 1, false, glm::value_ptr(M1));
 					k->draw();
 				}
@@ -117,7 +135,7 @@ void Board3D::leftMouseButton() {
 		this->model_board[x][y]->value = this->grid[y][x]->currentValue;
 
 		if (this->checkWin())
-			printf("WYGRANA1!!!11oneoneone");
+			printf("WYGRANA1!!!11oneoneone\n");
 	}
 }
 
@@ -131,7 +149,7 @@ void Board3D::rightMouseButton() {
 		//printf("Po: %d\n", this->grid[x][y]->currentValue);
 		this->model_board[x][y]->value = this->grid[y][x]->currentValue;
 		if (this->checkWin())
-			printf("WYGRANA1!!!11oneoneone");
+			printf("WYGRANA1!!!11oneoneone\n");
 	}
 }
 

@@ -139,6 +139,7 @@ void Cylinder::printSelf() const
 void Cylinder::draw() const
 {
     // interleaved array
+    /*
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -151,6 +152,21 @@ void Cylinder::draw() const
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    */
+
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, getVertices());
+    glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, getNormals());
+    glVertexAttribPointer(2, 2, GL_FLOAT, false, 0, getTexCoords());
+
+    glDrawElements(GL_TRIANGLES, (unsigned int)indices.size(), GL_UNSIGNED_INT, indices.data());
+
+    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
 }
 
 
@@ -295,7 +311,7 @@ void Cylinder::buildVerticesSmooth()
     {
         z = -(height * 0.5f) + (float)i / stackCount * height;      // vertex position z
         radius = baseRadius + (float)i / stackCount * (topRadius - baseRadius);     // lerp
-        float t = 1.0f - (float)i / stackCount;   // top-to-bottom
+        float t = 1.0f -(float)i / stackCount;   // top-to-bottom
 
         for (int j = 0, k = 0; j <= sectorCount; ++j, k += 3)
         {
@@ -303,7 +319,7 @@ void Cylinder::buildVerticesSmooth()
             y = unitCircleVertices[k + 1];
             addVertex(x * radius, y * radius, z);   // position
             addNormal(sideNormals[k], sideNormals[k + 1], sideNormals[k + 2]); // normal
-            addTexCoord((float)j / sectorCount, t); // tex coord
+            addTexCoord(t, (float)j / sectorCount); // tex coord
         }
     }
 
