@@ -6,8 +6,8 @@ Board3D::Board3D(Camera* camera, WindowSize* winSize, int size) : Board(size) {
 	this->modelShader = new ShaderProgram("shaders/model_v_lambert.glsl", NULL, "shaders/model_f_lambert.glsl");
 	this->initNewBoard(size);
 	this->gridPos.reserve(2);
-	this->metalTex = readTexture2D("textures/iron_block.png");
-	this->specTex = readTexture2D("textures/iron_block_spec.png");
+	this->metalTex = readTexture2D("textures/polished_diorite.png");
+	this->specTex = readTexture2D("textures/spec.png");
 }
 
 Board3D::~Board3D() {
