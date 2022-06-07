@@ -1,8 +1,8 @@
 #include "Utility2.h"
 
 glm::vec3 caclMouseToWorld(Camera* camera, WindowSize* winSize, double xPos, double yPos, float y) {
-	float mouseX = (xPos / winSize->width) * 2 - 1;
-	float mouseY = (yPos / winSize->height) * 2 - 1;
+	float mouseX = ((float)xPos / winSize->width) * 2 - 1;
+	float mouseY = ((float)yPos / winSize->height) * 2 - 1;
 	float ar = camera->aspectRatio;
 	float alfa = camera->FOV / 2;
 	float fZ = camera->farPlane;

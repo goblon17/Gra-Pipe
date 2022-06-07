@@ -57,7 +57,7 @@ void Pause::mouseButtonCallback(GLFWwindow* window, int button, int action, int 
 			case 1: {
 				printf("Nowa gra\n");
 				game->setCurrentState(GAME_SCENE_PLAY);
-				game->board->initNewBoard(board_size);
+				game->board->initNewBoard(game->board_size);
 				break;
 			}
 			case 2: {

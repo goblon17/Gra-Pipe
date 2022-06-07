@@ -1,6 +1,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include <windows.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>

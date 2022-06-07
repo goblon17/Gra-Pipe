@@ -1,5 +1,6 @@
 #define GLM_FORCE_RADIANS
 
+#include <windows.h>
 #include <cstdio>
 #include <cstdlib>
 #include <GL/glew.h>
@@ -96,7 +97,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetScrollCallback(*window, scrollCallback);
 
 	cursor = new CursorState;
-	game = new Game(winSize, cursor, camera, board_size);
+	game = new Game(winSize, cursor, camera, 4);
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {

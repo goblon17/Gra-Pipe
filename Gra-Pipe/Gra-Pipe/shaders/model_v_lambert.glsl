@@ -5,7 +5,7 @@ uniform mat4 P;
 uniform mat4 V;
 uniform mat4 M;
 
-uniform vec4 highPos = vec4(0,-3,0,0);
+uniform vec4 highPos = vec4(0,-5,0,0);
 uniform vec4 lightPos = vec4(0,15,0,0);
 
 //Atrybuty
@@ -26,9 +26,12 @@ void main(void) {
 
     gl_Position=P*V*M*vertex;
 
+    mat4 M1 = mat4(1);
+    M1[3] = M[3];
+
     normalView = normalize(V*M*normal);
     eyeVector = normalize(vec4(0, 0, 0, 1) - V * M * vertex);
-    highDirView = normalize(V * M * highPos - V * M * vertex);
+    highDirView = normalize(V * M1 * highPos - V * M * vertex);
     lightDirView = normalize(V * lightPos - V * M * vertex);
     texCoord = t;
 }

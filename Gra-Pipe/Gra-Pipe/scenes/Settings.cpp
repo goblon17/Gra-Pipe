@@ -93,6 +93,9 @@ void Settings::mouseButtonCallback(GLFWwindow* window, int button, int action, i
 			}
 			case 2: {
 				this->buttons.at(2)->nextState();
+				game->board_size = 4 + this->buttons.at(2)->state;
+				printf("Wielkosc: %d", game->board_size);
+				game->board->initNewBoard(game->board_size);
 			}
 			}
 		}

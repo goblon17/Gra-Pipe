@@ -14,7 +14,7 @@ private:
 	GUItexture* highlighted = nullptr;
 	glm::vec2 pos = glm::vec2(0, 0);
 	glm::vec2 size = glm::vec2(0, 0);
-	bool inBounds(double normalX, double normalY, float ar);
+	bool inBounds(float normalX, float normalY, float ar);
 public:
 	int state = 0;
 	bool isSeleced = false;

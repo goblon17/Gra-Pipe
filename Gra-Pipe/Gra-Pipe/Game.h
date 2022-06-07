@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <windows.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
@@ -25,8 +26,8 @@ private:
 	std::vector<Scene*> scenes;
 	WindowSize* winSize = nullptr;
 	CursorState* cursor = nullptr;
-	int board_size;
 public:
+	int board_size;
 	Board3D* board = nullptr;
 	Camera* camera;
 	Game(WindowSize* winSize, CursorState* cursor, Camera* camera, int board_size);

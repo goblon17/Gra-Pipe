@@ -7,7 +7,6 @@
 #include "lodepng.h"
 
 const float PI = 3.141592653589793f;
-const int board_size = 3;
 const double rotationSpeed = PI;
 
 const float tile_sphere_radius = 0.08f;
@@ -50,10 +49,11 @@ struct tile {
 	unsigned int correctValue;
 	bool isTarget;
 	bool isSource;
+	bool isHighlighted;
 
-	tile() { this->x = this->y = this->currentValue = this->visited = this->correctValue = this->isTarget = this->isSource = 0; }
-	tile(unsigned int x, unsigned int y) { this->x = x; this->y = y; this->currentValue = this->visited = this->correctValue = this->isTarget = this->isSource = 0; }
-	tile(unsigned int x, unsigned int y, unsigned int v, bool vis) { this->x = x; this->y = y; this->currentValue = v; this->visited = vis; this->correctValue = this->isTarget = this->isSource = 0; }
+	tile() { this->x = this->y = this->currentValue = this->visited = this->correctValue = this->isTarget = this->isSource = this->isHighlighted = 0; }
+	tile(unsigned int x, unsigned int y) { this->x = x; this->y = y; this->currentValue = this->visited = this->correctValue = this->isTarget = this->isSource = this->isHighlighted = 0; }
+	tile(unsigned int x, unsigned int y, unsigned int v, bool vis) { this->x = x; this->y = y; this->currentValue = v; this->visited = vis; this->correctValue = this->isTarget = this->isSource = this->isHighlighted = 0; }
 };
 
 GLuint readTexture2D(const char* filaname);

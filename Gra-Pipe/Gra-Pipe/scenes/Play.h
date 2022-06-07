@@ -1,6 +1,7 @@
 #ifndef PLAY_H
 #define PLAY_H
 
+#include <windows.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>

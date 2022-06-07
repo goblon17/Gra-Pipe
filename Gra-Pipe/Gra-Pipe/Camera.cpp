@@ -49,7 +49,7 @@ float Camera::calcBeta() {
 }
 
 void Camera::changePos(double dX, double dY, int withSens) {
-	double dA = dX * PI / 180.0f / this->sensitivity;
+	float dA = (float)dX * PI / 180.0f / this->sensitivity;
 	dA *= withSens ? 1 : this->sensitivity;
 
 	this->alfa += dA;
@@ -60,7 +60,7 @@ void Camera::changePos(double dX, double dY, int withSens) {
 		this->alfa += 2 * PI;
 	}
 
-	double dB = dY * PI / 180.0f / this->sensitivity;
+	float dB = (float)dY * PI / 180.0f / this->sensitivity;
 	dB *= withSens ? 1 : this->sensitivity;
 	if (this->beta + dB > -PI / 2 && this->beta + dB < PI / 2) {
 		this->beta += dB;
@@ -70,7 +70,7 @@ void Camera::changePos(double dX, double dY, int withSens) {
 	this->Vmat = this->calculateVmat();
 }
 
-void Camera::changePos(double dScroll) {
+void Camera::changePos(float dScroll) {
 	if (this->radius - dScroll < 0 || this->radius - dScroll > 10) {
 		return;
 	}

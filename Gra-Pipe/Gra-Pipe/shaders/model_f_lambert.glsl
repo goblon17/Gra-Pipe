@@ -31,16 +31,18 @@ void main(void) {
 		kd = mix(mainColor, color, 0.2);
 	}
 	vec4 ks1 = texture(specTexture, texCoord);
-	vec4 ks2 = highColor;
+	vec4 ks2 = highColor * ks1;
 
 	float nl1 = clamp(dot(normalizedNormal, lightDirView), 0, 1);
 	float nl2 = clamp(dot(normalizedNormal, highDirView), 0, 1);
 
 	float rv1 = pow(clamp(dot(normalizedEyeVector, lightReflection), 0, 1), 20);
-	float rv2 = pow(clamp(dot(normalizedEyeVector, highlightReflection), 0, 1), 5);
+	float rv2 = pow(clamp(dot(normalizedEyeVector, highlightReflection), 0, 1), 20);
 
 	vec4 col1 = vec4(kd.rgb * nl1, kd.a) + vec4(ks1.rgb * rv1, 0);
 	vec4 col2 = vec4(kd.rgb * nl2, kd.a) + vec4(ks2.rgb * rv2, 0);
+	vec4 correction = mix(vec4(1,1,1,1), highColor, 0.8);
+	col2 = col2 * correction;
 
 	if(highlight) {
 		pixelColor = vec4(col1.rgb + col2.rgb, 1);

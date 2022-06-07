@@ -26,7 +26,12 @@ void Play::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	for (Button* b : this->buttons) {
 		b->mousePosCallback(window, xPos, yPos, this->winSize);
 	}
-	this->board->cursorPosCallback(window, xPos, yPos);
+	if (this->getHighlightedID() == -1) {
+		this->board->cursorPosCallback(window, xPos, yPos);
+	}
+	else {
+		this->board->flushSelection();
+	}
 	if (this->cursor->middle) {
 		camera->changePos(this->cursor->curX - this->cursor->oldX, this->cursor->curY - this->cursor->oldY, 1);
 	}
@@ -59,6 +64,9 @@ void Play::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 				break;
 			}
 			case -1: {
+				if (glfwGetInputMode(window, GLFW_CURSOR) != GLFW_CURSOR_NORMAL) {
+					break;
+				}
 				printf("Plansza\n");
 				this->board->leftMouseButton();
 				break;
@@ -76,6 +84,9 @@ void Play::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 			int id = this->getHighlightedID();
 			switch (id) {
 			case -1: {
+				if (glfwGetInputMode(window, GLFW_CURSOR) != GLFW_CURSOR_NORMAL) {
+					break;
+				}
 				printf("azsnalP\n");
 				this->board->rightMouseButton();
 				break;
@@ -88,5 +99,5 @@ void Play::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 }
 
 void Play::scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
-	camera->changePos(yOffset);
+	camera->changePos((float)yOffset);
 }
