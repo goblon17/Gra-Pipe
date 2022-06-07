@@ -20,7 +20,26 @@ Board3D::~Board3D() {
 }
 
 void Board3D::initNewBoard(int size) {
+	if (this->grid != NULL) {
+		for (int i = 0; i < this->size; i++) {
+			for (int j = 0; j < this->size; j++)
+				delete this->grid[i][j];
+			delete this->grid[i];
+		}
+		delete this->grid;
+	}
+
+	if (this->model_board != NULL) {
+		for (int i = 0; i < this->size; i++) {
+			for (int j = 0; j < this->size; j++)
+				delete this->model_board[i][j];
+			delete this->model_board[i];
+		}
+		delete this->model_board;
+	}
+
 	this->size = size;
+
 	this->grid = new tile * *[this->size];
 	for (int i = 0; i < this->size; i++) {
 		this->grid[i] = new tile * [this->size];
