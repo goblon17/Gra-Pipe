@@ -14,6 +14,7 @@
 #include "scenes/Play.h"
 #include "scenes/Pause.h"
 #include "scenes/Settings.h"
+#include "scenes/Win.h"
 
 class Board3D;
 
@@ -39,6 +40,7 @@ public:
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void windowResizeCallback(GLFWwindow* window, int width, int height);
 	void Draw(double dTime);
+	void increaseSize();
 };
 
 #endif

@@ -69,6 +69,9 @@ void Play::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 				}
 				printf("Plansza\n");
 				this->board->leftMouseButton();
+				if (this->board->isWon) {
+					game->setCurrentState(GAME_SCENE_WIN);
+				}
 				break;
 			}
 			}
@@ -89,6 +92,9 @@ void Play::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 				}
 				printf("azsnalP\n");
 				this->board->rightMouseButton();
+				if (this->board->isWon) {
+					game->setCurrentState(GAME_SCENE_WIN);
+				}
 				break;
 			}
 			}

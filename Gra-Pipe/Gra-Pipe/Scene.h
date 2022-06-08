@@ -16,12 +16,12 @@ class Scene
 {
 protected:
 	GUItexture* logo = nullptr;
-	std::vector<Button*> buttons;
 	WindowSize* winSize = nullptr;
 	CursorState* cursor = nullptr;
 	Camera* camera = nullptr;
 	int getHighlightedID();
 public:
+	std::vector<Button*> buttons;
 	Scene() {};
 	~Scene() {};
 	virtual void Draw(double dTime, ShaderProgram* guiShader) {};

@@ -84,6 +84,9 @@
     <ClCompile Include="Cylinder.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="scenes\Win.cpp">
+      <Filter>scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shaderprogram.h">
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="Cylinder.h">
       <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Win.h">
+      <Filter>scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,7 @@ Game::Game(WindowSize* winSize) {
 	this->scenes.push_back(new Play(this->winSize, this->cursor, this->camera, this->board));
 	this->scenes.push_back(new Pause(this->winSize, this->cursor, this->camera));
 	this->scenes.push_back(new Settings(this->winSize, this->cursor, this->camera));
+	this->scenes.push_back(new Win(this->winSize, this->cursor, this->camera, &this->board_size));
 }
 
 Game::~Game() {
@@ -73,4 +74,11 @@ void Game::windowResizeCallback(GLFWwindow* window, int width, int height) {
 	glViewport(0, 0, width, height);
 	this->winSize->width = width;
 	this->winSize->height = height;
+}
+
+void Game::increaseSize() {
+	this->scenes.at(3)->buttons.at(2)->nextState();
+	this->board_size = 4 + this->scenes.at(3)->buttons.at(2)->state;
+	printf("Wielkosc: %d", this->board_size);
+	this->board->initNewBoard(this->board_size);
 }
