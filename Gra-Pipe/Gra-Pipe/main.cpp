@@ -15,11 +15,9 @@
 #include "Board.h"
 #include "Game.h"
 
-CursorState* cursor;
 WindowSize* winSize;
 
 Game* game;
-Camera* camera;
 
 void errorCallback(int error, const char* description) {
 	fputs(description, stderr);
@@ -30,10 +28,6 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 void cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
-	cursor->oldX = cursor->curX;
-	cursor->oldY = cursor->curY;
-	cursor->curX = xPos;
-	cursor->curY = yPos;
 	game->cursorPosCallback(window, xPos, yPos);
 }
 
@@ -46,11 +40,7 @@ void scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
 }
 
 void windowResizeCallback(GLFWwindow* window, int width, int height) {
-	if (height == 0) return;
-	camera->resize((float)width / (float)height);
-	glViewport(0, 0, width, height);
-	winSize->width = width;
-	winSize->height = height;
+	game->windowResizeCallback(window, width, height);
 }
 
 void initOpenGLProgram(GLFWwindow** window) {
@@ -78,14 +68,7 @@ void initOpenGLProgram(GLFWwindow** window) {
 		exit(EXIT_FAILURE);
 	}
 
-	camera = new Camera(
-		glm::vec3(0, 2, -2.5),	//pozycja kamery
-		glm::vec3(0, 0, 0),		//gdzie kamera patrzy
-		glm::vec3(0, 1, 0),		//gdzie kamera ma gore
-		60,						//fov
-		1,						//stosunek szer/wys
-		0.01f,					//bliska plaszczyzna
-		100);					//daleka plaszczyzna
+	game = new Game(winSize);
 
 	glClearColor(0, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
@@ -95,14 +78,9 @@ void initOpenGLProgram(GLFWwindow** window) {
 	glfwSetCursorPosCallback(*window, cursorPosCallback);
 	glfwSetMouseButtonCallback(*window, mouseButtonCallback);
 	glfwSetScrollCallback(*window, scrollCallback);
-
-	cursor = new CursorState;
-	game = new Game(winSize, cursor, camera, 4);
 }
 
 void freeOpenGLProgram(GLFWwindow* window) {
-	delete cursor;
-	delete camera;
 	delete winSize;
 	delete game;
 	glfwDestroyWindow(window);

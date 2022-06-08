@@ -152,6 +152,9 @@ void Cylinder::draw() const
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    Zmienione z powodu nie działania oraz bycia na liście zakazanych poleceń
+    Reszta metod rysujących nie jest używana
     */
 
     glEnableVertexAttribArray(0);

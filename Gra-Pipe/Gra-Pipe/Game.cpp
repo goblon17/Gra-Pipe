@@ -1,26 +1,37 @@
 #include "Game.h"
 
-Game::Game(WindowSize* winSize, CursorState* cursor, Camera* camera, int board_size) {
+Game::Game(WindowSize* winSize) {
 	this->winSize = winSize;
-	this->cursor = cursor;
-	this->camera = camera;
-	this->board_size = board_size;
-	this->board = new Board3D(camera, winSize, this->board_size);
+	this->board_size = 4;
 	this->guiShader = new ShaderProgram("shaders/gui_v_shader.glsl", NULL, "shaders/gui_f_shader.glsl");
 	this->skybox = new Skybox();
-	this->scenes.push_back(new Menu(winSize, cursor, camera));
-	this->scenes.push_back(new Play(winSize, cursor, camera, this->board));
-	this->scenes.push_back(new Pause(winSize, cursor, camera));
-	this->scenes.push_back(new Settings(winSize, cursor, camera));
+	this->cursor = new CursorState;
+	this->camera = new Camera(
+		glm::vec3(0, 2, -2.5),	//pozycja kamery
+		glm::vec3(0, 0, 0),		//gdzie kamera patrzy
+		glm::vec3(0, 1, 0),		//gdzie kamera ma gore
+		60,						//fov
+		(float)this->winSize->width / (float)this->winSize->height, //stosunek szer/wys
+		0.01f,					//bliska plaszczyzna
+		100);					//daleka plaszczyzna
+
+	this->board = new Board3D(this->camera, this->winSize, this->board_size);
+
+	this->scenes.push_back(new Menu(this->winSize, this->cursor, this->camera));
+	this->scenes.push_back(new Play(this->winSize, this->cursor, this->camera, this->board));
+	this->scenes.push_back(new Pause(this->winSize, this->cursor, this->camera));
+	this->scenes.push_back(new Settings(this->winSize, this->cursor, this->camera));
 }
 
 Game::~Game() {
 	delete this->skybox;
 	delete this->guiShader;
+	delete this->cursor;
 	for (Scene* s : this->scenes) {
 		delete s;
 	}
 	delete this->board;
+	delete this->camera;
 }
 
 void Game::setCurrentState(int state) {
@@ -41,6 +52,10 @@ void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 }
 
 void Game::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
+	this->cursor->oldX = this->cursor->curX;
+	this->cursor->oldY = this->cursor->curY;
+	this->cursor->curX = xPos;
+	this->cursor->curY = yPos;
 	this->scenes.at(this->currentState)->cursorPosCallback(window, xPos, yPos);
 }
 
@@ -50,4 +65,12 @@ void Game::scrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
 
 void Game::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	this->scenes.at(this->currentState)->keyCallback(window, key, scancode, action, mods);
+}
+
+void Game::windowResizeCallback(GLFWwindow* window, int width, int height) {
+	if (height == 0) return;
+	this->camera->resize((float)width / (float)height);
+	glViewport(0, 0, width, height);
+	this->winSize->width = width;
+	this->winSize->height = height;
 }
