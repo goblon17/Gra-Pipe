@@ -1,59 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Pliki zasobów">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Pliki nagłówkowe">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Pliki źródłowe">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="scenes">
       <UniqueIdentifier>{90029ccf-c873-4cf7-bc79-f4f6534c17e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="models">
+      <UniqueIdentifier>{d5055960-466f-4ac7-8fd1-a18bcc0571a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="gui">
+      <UniqueIdentifier>{f65e3340-6f37-4308-b306-27c071fe513a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{38caa15e-d035-4f2a-8f0a-e7ded7403302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{2dd27393-07d5-4795-b66e-df4d12179e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="board">
+      <UniqueIdentifier>{62b25374-5a9a-4951-b273-65cea018801c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="shaderprogram.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Skybox.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Board.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="GUItexture.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="lodepng.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility2.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="scenes\Menu.cpp">
       <Filter>scenes</Filter>
     </ClCompile>
@@ -66,65 +37,65 @@
     <ClCompile Include="scenes\Settings.cpp">
       <Filter>scenes</Filter>
     </ClCompile>
-    <ClCompile Include="MultipleStateButton.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Board3D.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="TileModel.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="Cylinder.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="scenes\Win.cpp">
       <Filter>scenes</Filter>
     </ClCompile>
+    <ClCompile Include="models\Cylinder.cpp">
+      <Filter>models</Filter>
+    </ClCompile>
+    <ClCompile Include="models\Sphere.cpp">
+      <Filter>models</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Button.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\GUItexture.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\MultipleStateButton.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="models\Model.cpp">
+      <Filter>models</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\Scene.cpp">
+      <Filter>scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\lodepng.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\shaderprogram.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\Utility.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\Utility2.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\Camera.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\Skybox.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="board\Board.cpp">
+      <Filter>board</Filter>
+    </ClCompile>
+    <ClCompile Include="board\Board3D.cpp">
+      <Filter>board</Filter>
+    </ClCompile>
+    <ClCompile Include="board\TileModel.cpp">
+      <Filter>board</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="shaderprogram.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="myCube.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Skybox.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="lodepng.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Board.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="GUItexture.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility2.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="scenes\Menu.h">
       <Filter>scenes</Filter>
     </ClInclude>
@@ -137,46 +108,79 @@
     <ClInclude Include="scenes\Settings.h">
       <Filter>scenes</Filter>
     </ClInclude>
-    <ClInclude Include="MultipleStateButton.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Board3D.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="TileModel.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Cylinder.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="scenes\Win.h">
       <Filter>scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="models\Cylinder.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="models\Sphere.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Button.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\GUItexture.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\MultipleStateButton.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="models\Model.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Scene.h">
+      <Filter>scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\lodepng.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\shaderprogram.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\Utility.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\Utility2.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\Camera.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\Skybox.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="board\Board.h">
+      <Filter>board</Filter>
+    </ClInclude>
+    <ClInclude Include="board\Board3D.h">
+      <Filter>board</Filter>
+    </ClInclude>
+    <ClInclude Include="board\TileModel.h">
+      <Filter>board</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\skybox_f_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>shaders</Filter>
     </None>
     <None Include="shaders\skybox_v_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>shaders</Filter>
     </None>
     <None Include="shaders\gui_f_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>shaders</Filter>
     </None>
     <None Include="shaders\gui_v_shader.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>shaders</Filter>
     </None>
     <None Include="shaders\model_f_lambert.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>shaders</Filter>
     </None>
     <None Include="shaders\model_v_lambert.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

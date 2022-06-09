@@ -7,7 +7,7 @@
 #include <cstdarg>
 #include <vector>
 #include "GUItexture.h"
-#include "shaderprogram.h"
+#include "utility/shaderprogram.h"
 #include "Button.h"
 
 class MultipleStateButton : public Button

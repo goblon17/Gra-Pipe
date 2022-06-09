@@ -5,9 +5,9 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "shaderprogram.h"
+#include "utility/shaderprogram.h"
 #include <vector>
-#include "Utility.h"
+#include "utility/Utility.h"
 #include "Camera.h"
 
 class Skybox

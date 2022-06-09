@@ -5,12 +5,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
-#include "Utility.h"
-#include "Camera.h"
-#include "Button.h"
+#include "utility/Utility.h"
+#include "utility/Camera.h"
+#include "gui/Button.h"
 #include "Scene.h"
-#include "Board3D.h"
-#include "Utility2.h"
+#include "board/Board3D.h"
+#include "utility/Utility2.h"
 
 class Board3D;
 

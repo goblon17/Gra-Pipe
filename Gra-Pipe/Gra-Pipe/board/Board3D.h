@@ -5,10 +5,10 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Board.h"
 #include "TileModel.h"
-#include "Sphere.h"
-#include "Camera.h"
-#include "Utility.h"
-#include "Utility2.h"
+#include "models/Sphere.h"
+#include "utility/Camera.h"
+#include "utility/Utility.h"
+#include "utility/Utility2.h"
 
 class Board3D : public Board {
 	TileModel*** model_board;

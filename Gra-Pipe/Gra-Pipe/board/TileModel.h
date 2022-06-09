@@ -1,9 +1,9 @@
 #ifndef PIPEMODEL_H
 #define PIPEMODEL_H
 
-#include "Sphere.h"
-#include "shaderprogram.h"
-#include "Cylinder.h"
+#include "models/Sphere.h"
+#include "utility/shaderprogram.h"
+#include "models/Cylinder.h"
 #include <glm/glm.hpp>
 
 

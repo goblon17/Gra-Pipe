@@ -5,11 +5,12 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
-#include "shaderprogram.h"
-#include "Utility.h"
-#include "Camera.h"
-#include "Scene.h"
-#include "Board3D.h"
+#include "utility/shaderprogram.h"
+#include "utility/Utility.h"
+#include "utility/Camera.h"
+#include "utility/Skybox.h"
+#include "scenes/Scene.h"
+#include "board/Board3D.h"
 #include "scenes/Menu.h"
 #include "scenes/Play.h"
 #include "scenes/Pause.h"

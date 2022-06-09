@@ -4,11 +4,10 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
-#include "Camera.h"
-#include "Skybox.h"
-#include "GUItexture.h"
-#include "Button.h"
-#include "Utility.h"
+#include "utility/Camera.h"
+#include "gui/GUItexture.h"
+#include "gui/Button.h"
+#include "utility/Utility.h"
 
 class Game;
 

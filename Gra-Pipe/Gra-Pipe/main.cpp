@@ -5,14 +5,7 @@
 #include <cstdlib>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include "shaderprogram.h"
-#include "Camera.h"
-#include "Utility.h"
-#include "myCube.h"
-#include "Board.h"
+#include "utility/Utility.h"
 #include "Game.h"
 
 WindowSize* winSize;

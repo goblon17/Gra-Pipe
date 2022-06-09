@@ -113,9 +113,9 @@ void Board::shuffleBoard() {
 void Board::rotate(int n, tile* t) {
 	for (int i = 0; i < n; i++) {
 		if (!(t->currentValue % 2))
-			t->currentValue = t->currentValue / 2.0;
+			t->currentValue = (unsigned int)(t->currentValue / 2.0);
 		else
-			t->currentValue = t->currentValue / 2.0 + 7.5;
+			t->currentValue = (unsigned int)(t->currentValue / 2.0 + 7.5);
 	}
 }
 

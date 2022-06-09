@@ -5,12 +5,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
-#include "GUItexture.h"
-#include "Utility.h"
-#include "Camera.h"
-#include "Button.h"
+#include "gui/GUItexture.h"
+#include "utility/Utility.h"
+#include "utility/Camera.h"
+#include "gui/Button.h"
 #include "Scene.h"
-#include "Utility2.h"
+#include "utility/Utility2.h"
 
 class Menu : public Scene
 {

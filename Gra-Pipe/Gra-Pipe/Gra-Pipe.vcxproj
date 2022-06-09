@@ -135,54 +135,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="board\Board.cpp" />
+    <ClCompile Include="board\Board3D.cpp" />
+    <ClCompile Include="board\TileModel.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GUItexture.cpp" />
-    <ClCompile Include="lodepng.cpp" />
+    <ClCompile Include="gui\Button.cpp" />
+    <ClCompile Include="gui\GUItexture.cpp" />
+    <ClCompile Include="gui\MultipleStateButton.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="MultipleStateButton.cpp" />
-    <ClCompile Include="Cylinder.cpp" />
+    <ClCompile Include="models\Cylinder.cpp" />
+    <ClCompile Include="models\Model.cpp" />
+    <ClCompile Include="models\Sphere.cpp" />
+    <ClCompile Include="scenes\Scene.cpp" />
     <ClCompile Include="scenes\Win.cpp" />
-    <ClCompile Include="TileModel.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scenes\Menu.cpp" />
     <ClCompile Include="scenes\Pause.cpp" />
     <ClCompile Include="scenes\Play.cpp" />
     <ClCompile Include="scenes\Settings.cpp" />
-    <ClCompile Include="shaderprogram.cpp" />
-    <ClCompile Include="Skybox.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Utility.cpp" />
-    <ClCompile Include="Utility2.cpp" />
-    <ClCompile Include="Board3D.cpp" />
+    <ClCompile Include="utility\Camera.cpp" />
+    <ClCompile Include="utility\lodepng.cpp" />
+    <ClCompile Include="utility\shaderprogram.cpp" />
+    <ClCompile Include="utility\Skybox.cpp" />
+    <ClCompile Include="utility\Utility.cpp" />
+    <ClCompile Include="utility\Utility2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Button.h" />
+    <ClInclude Include="board\Board.h" />
+    <ClInclude Include="board\Board3D.h" />
+    <ClInclude Include="board\TileModel.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GUItexture.h" />
-    <ClInclude Include="lodepng.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="MultipleStateButton.h" />
-    <ClInclude Include="myCube.h" />
-    <ClInclude Include="Board3D.h" />
-    <ClInclude Include="Cylinder.h" />
+    <ClInclude Include="gui\Button.h" />
+    <ClInclude Include="gui\GUItexture.h" />
+    <ClInclude Include="gui\MultipleStateButton.h" />
+    <ClInclude Include="models\Cylinder.h" />
+    <ClInclude Include="models\Model.h" />
+    <ClInclude Include="models\Sphere.h" />
+    <ClInclude Include="scenes\Scene.h" />
     <ClInclude Include="scenes\Win.h" />
-    <ClInclude Include="TileModel.h" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="scenes\Menu.h" />
     <ClInclude Include="scenes\Pause.h" />
     <ClInclude Include="scenes\Play.h" />
     <ClInclude Include="scenes\Settings.h" />
-    <ClInclude Include="Skybox.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="Utility.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="shaderprogram.h" />
-    <ClInclude Include="Utility2.h" />
+    <ClInclude Include="utility\Camera.h" />
+    <ClInclude Include="utility\lodepng.h" />
+    <ClInclude Include="utility\shaderprogram.h" />
+    <ClInclude Include="utility\Skybox.h" />
+    <ClInclude Include="utility\Utility.h" />
+    <ClInclude Include="utility\Utility2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\gui_f_shader.glsl" />

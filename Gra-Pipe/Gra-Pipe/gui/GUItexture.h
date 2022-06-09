@@ -6,9 +6,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "shaderprogram.h"
-#include "Camera.h"
-#include "Utility.h"
+#include "utility/shaderprogram.h"
+#include "utility/Camera.h"
+#include "utility/Utility.h"
 
 class GUItexture
 {

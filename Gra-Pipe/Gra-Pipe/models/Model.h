@@ -25,7 +25,7 @@ Place, Fifth Floor, Boston, MA  02110 - 1301  USA
 #include <vector>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
-#include "Utility.h"
+#include "utility/Utility.h"
 
 namespace Models {
 

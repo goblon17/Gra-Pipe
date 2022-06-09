@@ -1,6 +1,6 @@
 #include "TileModel.h"
 #include "glm/ext/matrix_transform.hpp"
-#include "Utility.h"
+#include "utility/Utility.h"
 
 TileModel::TileModel(int val, int x, int y) {
 	this->value = val;

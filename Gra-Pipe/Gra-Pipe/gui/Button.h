@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include "GUItexture.h"
-#include "shaderprogram.h"
+#include "utility/shaderprogram.h"
 
 class Button
 {
