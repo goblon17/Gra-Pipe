@@ -4,4 +4,4 @@ Kod został napisany przez:
 - Szymon Kaczmarek
 - Łukasz Kania
 - Model cylindra pozyskany ze strony http://www.songho.ca/opengl/gl_cylinder.html
-- shaderprogram oraz model sfery udostępniony przez dr. inż. Witolda Andrzejewskiego na zajęciach
+- Shaderprogram oraz model sfery udostępniony przez dr. inż. Witolda Andrzejewskiego na zajęciach
