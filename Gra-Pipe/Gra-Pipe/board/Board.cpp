@@ -8,6 +8,16 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
 
+int getCurrY() {
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) {
+		return csbi.dwCursorPosition.Y;
+	}
+	else {
+		return 0;
+	}
+}
+
 Board::Board(int size) {
 	this->size = size;
 	this->grid = new tile** [this->size];
@@ -121,7 +131,8 @@ void Board::rotate(int n, tile* t) {
 
 void Board::printBoard() {
 	int x = 2;
-	int y = 13;
+	int py = getCurrY() + 3;
+	int y = py;
 
 	gotoxy(2, y - 2);
 	printf("Correct Board:");
@@ -155,7 +166,7 @@ void Board::printBoard() {
 	
 	
 	x = this->size * 5 + 4;
-	y = 13;
+	y = py;
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
 			int type = this->grid[i][j]->currentValue;

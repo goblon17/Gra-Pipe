@@ -24,9 +24,9 @@ public:
 	void initModels();
 	void calcWorldToGrid(glm::vec3 mousePos);
 	void drawBoard(double dTime);
-	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos); // Ustawiaj flage na danym klocku ze jest podswietlony
-	void leftMouseButton(); // Wyszukaj podswietlony klocek i go obroc
-	void rightMouseButton(); // -||- tylko w druga strone
+	void cursorPosCallback(GLFWwindow* window, double xPos, double yPos);
+	void leftMouseButton();
+	void rightMouseButton();
 	bool inbounds();
 	void flushSelection();
 	Board3D(Camera* camera, WindowSize* winSize, int size);

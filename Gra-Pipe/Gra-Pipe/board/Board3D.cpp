@@ -68,7 +68,6 @@ void Board3D::initModels() {
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {
 			this->model_board[j][i]->value = this->grid[j][i]->currentValue;
-			this->model_board[j][i]->initModel();
 		}
 	}
 }
@@ -91,7 +90,7 @@ void Board3D::drawBoard(double dTime) {
 	
 	for (int i = 0; i < this->size; i++) {
 		for (int j = 0; j < this->size; j++) {			
-			this->model_board[j][i]->drawTile(this->size, this->grid[j][i], this->modelShader);
+			this->model_board[j][i]->drawTile(this->size, this->grid[j][i], this->modelShader, dTime);
 		}
 	}
 }
@@ -100,7 +99,7 @@ void Board3D::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	if (glfwGetInputMode(window, GLFW_CURSOR) != GLFW_CURSOR_NORMAL) {
 		return;
 	}
-	glm::vec3 mousePos = caclMouseToWorld(this->camera, this->winSize, xPos, yPos, 0); // Tu masz pozycje w swiecie
+	glm::vec3 mousePos = caclMouseToWorld(this->camera, this->winSize, xPos, yPos, 0);
 	calcWorldToGrid(mousePos);
 
 	this->flushSelection();
@@ -108,18 +107,15 @@ void Board3D::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
 	if (this->inbounds()) {
 		this->grid[this->gridPos.y][this->gridPos.x]->isHighlighted = true;
 	}
-	//printf("%f %f %f %d %d\n", mousePos[0], mousePos[1], mousePos[2], this->gridPos[0], this->gridPos[1]);
 }
 
 void Board3D::leftMouseButton() {
-	//printf("LEFT: %d %d\n", this->gridPos[0], this->gridPos[1]);
 	if (this->inbounds()) {
 		int x = this->gridPos.x;
 		int y = this->gridPos.y;
-		//printf("Przed: %d\n", this->grid[x][y]->currentValue);
 		this->rotate(1, this->grid[y][x]);
-		//printf("Po: %d\n", this->grid[x][y]->currentValue);
-		this->model_board[y][x]->value = this->grid[y][x]->currentValue;
+
+		this->model_board[y][x]->rotateLeft();
 
 		if (this->checkWin()) {
 			this->isWon = true;
@@ -132,14 +128,13 @@ void Board3D::leftMouseButton() {
 }
 
 void Board3D::rightMouseButton() {
-	//printf("RIGHT: %d %d\n", this->gridPos[0], this->gridPos[1]);
 	if (this->inbounds()) {
 		int x = this->gridPos.x;
 		int y = this->gridPos.y;
-		//printf("Przed: %d\n", this->grid[x][y]->currentValue);
 		this->rotate(3, this->grid[y][x]);
-		//printf("Po: %d\n", this->grid[x][y]->currentValue);
-		this->model_board[y][x]->value = this->grid[y][x]->currentValue;
+
+		this->model_board[y][x]->rotateRight();
+
 		if (this->checkWin()) {
 			this->isWon = true;
 			printf("WYGRANA1!!!11oneoneone\n");
@@ -153,7 +148,6 @@ void Board3D::rightMouseButton() {
 void Board3D::calcWorldToGrid(glm::vec3 mousePos) {
 	this->gridPos.x = (int)round(0.5 * this->size - 0.5 + 2 * mousePos[0]);
 	this->gridPos.y = (int)round(0.5 * this->size - 0.5 + 2 * mousePos[2]);
-	//tumu(l)ec
 }
 
 bool Board3D::inbounds() {

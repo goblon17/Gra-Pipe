@@ -11,16 +11,25 @@
 
 
 class TileModel {
-public:
-	int value;
+private:
 	int x, y;
 	Models::Sphere *center;
-	std::vector<Cylinder*> pipes;
-	
-	void initModel();
-	void drawTile(int size, tile* til, ShaderProgram* modelShader);
+	Cylinder* pipe;
+
+	float rotSpeed = PI * 3;
+	float desiredRotation = 0;
+	float currentRotation = 0;
+	int rotationDirection = 0;
+
+	void rotate(double dTime);
+
+public:
+	int value;
+	void drawTile(int size, tile* til, ShaderProgram* modelShader, double dTime);
 	TileModel(int val, int x, int y);
 	~TileModel();
+	void rotateLeft();
+	void rotateRight();
 };
 
 #endif
