@@ -22,7 +22,7 @@ Win::~Win() {
 
 void Win::Draw(double dTime, ShaderProgram* guiShader) {
 	this->logo->Draw(this->camera, guiShader);
-	bool f = !(*this->boardSize < 10);
+	bool f = !(*this->boardSize < MAX_BOARD_SIZE);
 	for (Button* b : this->buttons) {
 		if (f) {
 			f = false;
@@ -34,12 +34,7 @@ void Win::Draw(double dTime, ShaderProgram* guiShader) {
 }
 
 void Win::cursorPosCallback(GLFWwindow* window, double xPos, double yPos) {
-	bool f = !(*this->boardSize < 10);
 	for (Button* b : this->buttons) {
-		if (f) {
-			f = false;
-			continue;
-		}
 		b->mousePosCallback(window, xPos, yPos, this->winSize);
 	}
 }
@@ -62,9 +57,10 @@ void Win::mouseButtonCallback(GLFWwindow* window, int button, int action, int mo
 		else if (action == GLFW_RELEASE) {
 			cursor->left = 0;
 			int id = this->getHighlightedID();
+			printf("%d\n", id);
 			switch (id) {
 			case 0: {
-				if (game->board_size < 10) {
+				if (game->board_size < MAX_BOARD_SIZE) {
 					printf("Następny\n");
 					game->increaseSize();
 					game->setCurrentState(GAME_SCENE_PLAY);

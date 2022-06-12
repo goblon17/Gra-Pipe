@@ -27,6 +27,8 @@ const int GAME_SCENE_PAUSE = 2;
 const int GAME_SCENE_SETTINGS = 3;
 const int GAME_SCENE_WIN = 4;
 
+const int MAX_BOARD_SIZE = 10;
+
 struct CursorState {
 	double oldX = 0;
 	double oldY = 0;

@@ -5,6 +5,9 @@
 #include "utility/shaderprogram.h"
 #include "models/Cylinder.h"
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include "glm/ext/matrix_transform.hpp"
+#include "utility/Utility.h"
 
 
 class TileModel {
@@ -15,7 +18,7 @@ public:
 	std::vector<Cylinder*> pipes;
 	
 	void initModel();
-	void drawTile(glm::mat4 M);
+	void drawTile(int size, tile* til, ShaderProgram* modelShader);
 	TileModel(int val, int x, int y);
 	~TileModel();
 };
