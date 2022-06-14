@@ -7,10 +7,6 @@
     <Filter Include="models">
       <UniqueIdentifier>{d5055960-466f-4ac7-8fd1-a18bcc0571a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shaders">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="gui">
       <UniqueIdentifier>{f65e3340-6f37-4308-b306-27c071fe513a}</UniqueIdentifier>
     </Filter>
@@ -22,6 +18,13 @@
     </Filter>
     <Filter Include="board">
       <UniqueIdentifier>{62b25374-5a9a-4951-b273-65cea018801c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{8672ef6c-65c7-4b19-b546-3c0df0df3ff4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -165,12 +168,6 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\skybox_f_shader.glsl">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="shaders\skybox_v_shader.glsl">
-      <Filter>shaders</Filter>
-    </None>
     <None Include="shaders\gui_f_shader.glsl">
       <Filter>shaders</Filter>
     </None>
@@ -183,21 +180,27 @@
     <None Include="shaders\model_v_lambert.glsl">
       <Filter>shaders</Filter>
     </None>
+    <None Include="shaders\skybox_f_shader.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\skybox_v_shader.glsl">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Gra-Pipe.rc">
-      <Filter>shaders</Filter>
+      <Filter>external</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico">
-      <Filter>shaders</Filter>
+      <Filter>external</Filter>
     </Image>
     <Image Include="textures\Logo.png">
-      <Filter>shaders</Filter>
+      <Filter>external</Filter>
     </Image>
     <Image Include="textures\icon.ico">
-      <Filter>shaders</Filter>
+      <Filter>external</Filter>
     </Image>
   </ItemGroup>
 </Project>
