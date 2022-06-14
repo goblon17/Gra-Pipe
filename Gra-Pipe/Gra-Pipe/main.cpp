@@ -13,6 +13,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "utility/Utility.h"
+#include "utility/lodepng.h"
 #include "Game.h"
 
 WindowSize* winSize;
@@ -53,7 +54,18 @@ void initOpenGLProgram(GLFWwindow** window) {
 		exit(EXIT_FAILURE);
 	}
 
-	*window = glfwCreateWindow(winSize->width, winSize->height, "PipeGame", NULL, NULL);
+	*window = glfwCreateWindow(winSize->width, winSize->height, "Pipe", NULL, NULL);
+
+	unsigned w, h;
+	std::vector<unsigned char> i;
+	lodepng::decode(i, w, h, "textures/Logo.png");
+
+	GLFWimage image;
+	image.height = h;
+	image.width = w;
+	image.pixels = (unsigned char*)i.data();
+
+	glfwSetWindowIcon(*window, 1, &image);
 
 	if (!*window) {
 		fprintf(stderr, "Nie udalo sie utworzyc okna.\n");
