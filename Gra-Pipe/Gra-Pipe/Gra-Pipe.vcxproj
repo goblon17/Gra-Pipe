@@ -170,6 +170,7 @@
     <ClInclude Include="models\Cylinder.h" />
     <ClInclude Include="models\Model.h" />
     <ClInclude Include="models\Sphere.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="scenes\Scene.h" />
     <ClInclude Include="scenes\Win.h" />
     <ClInclude Include="scenes\Menu.h" />
@@ -190,6 +191,14 @@
     <None Include="shaders\model_v_lambert.glsl" />
     <None Include="shaders\skybox_f_shader.glsl" />
     <None Include="shaders\skybox_v_shader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Gra-Pipe.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+    <Image Include="textures\icon.ico" />
+    <Image Include="textures\Logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -162,6 +162,7 @@
     <ClInclude Include="board\TileModel.h">
       <Filter>board</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\skybox_f_shader.glsl">
@@ -182,5 +183,21 @@
     <None Include="shaders\model_v_lambert.glsl">
       <Filter>shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Gra-Pipe.rc">
+      <Filter>shaders</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>shaders</Filter>
+    </Image>
+    <Image Include="textures\Logo.png">
+      <Filter>shaders</Filter>
+    </Image>
+    <Image Include="textures\icon.ico">
+      <Filter>shaders</Filter>
+    </Image>
   </ItemGroup>
 </Project>
