@@ -1,3 +1,10 @@
+//--------------------------------------------
+// Title: Gra Pipe
+// Authors: Szymon Kaczmarek, Lukasz Kania
+// Date: ../../2022
+// Version: 1.2
+//--------------------------------------------
+
 #define GLM_FORCE_RADIANS
 
 #include <windows.h>
